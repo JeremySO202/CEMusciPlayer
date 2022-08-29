@@ -6,6 +6,13 @@ public class Usuario {
     private String provincia;
     private String contraseña;
 
+    /***
+     *Constructor de la clase Usuario
+     * @param nombreCompleto nombre del usuario a registrar
+     * @param correoElectronico correo de la persona a regitrar
+     * @param provincia provincia en la que vive el usuario
+     * @param contraseña constraseña que registra el usuario
+     */
     public Usuario(String nombreCompleto, String correoElectronico, String provincia, String contraseña) {
         this.nombreCompleto = nombreCompleto;
         this.correoElectronico = correoElectronico;
