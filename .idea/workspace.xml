@@ -29,11 +29,14 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2E2k40BhYC6oQrWpAB6yOOnqSXb" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -52,6 +55,7 @@
       <recent name="C:\Users\Dani2\OneDrive\Documentos\GitHub\CEMusciPlayer\src" />
     </key>
   </component>
+
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -75,6 +79,11 @@
       <option name="presentableId" value="Default" />
       <updated>1661800875481</updated>
       <workItem from="1661806361826" duration="2689000" />
+      <workItem from="1661835862851" duration="327000" />
+      <workItem from="1661836211718" duration="376000" />
+      <workItem from="1661878493556" duration="1203000" />
+      <workItem from="1661887845175" duration="4472000" />
+      <workItem from="1661897544943" duration="1407000" />
     </task>
     <servers />
   </component>
@@ -91,5 +100,29 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Listas.ListaCanciones" memberName="head" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="reproductor.lista.head.prev" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
