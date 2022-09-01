@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee7eb185-4c30-438e-87cc-b7458c045c7d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Reproductor/Reproductor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Biblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Biblioteca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" afterDir="false" />
     </list>
-    <list id="c79cbc9b-8adc-4bcc-91c7-3778fd11b00f" name="Changes by Dani2" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Clases/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Usuario.java" afterDir="false" />
-    </list>
+    <list id="c79cbc9b-8adc-4bcc-91c7-3778fd11b00f" name="Changes by Dani2" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,9 +39,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false"
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dani2\OneDrive\Documentos\GitHub\CEMusciPlayer\Recursos\Canciones" />
+      <recent name="C:\Users\Dani2\OneDrive\Documentos\GitHub\CEMusciPlayer\src\Ventanas" />
+      <recent name="C:\Users\Dani2\OneDrive\Documentos\GitHub\CEMusciPlayer\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />

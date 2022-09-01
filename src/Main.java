@@ -1,10 +1,19 @@
 import Reproductor.Reproductor;
+import Ventanas.GUI_Reproductor;
+
+import javax.swing.*;
+import java.awt.*;
+
 
 public class Main {
     public static void main(String[] args) {
         //TODO GUI
-        Reproductor reproductor = new Reproductor();
-        reproductor.Reproducir("Fondo.mp3");
+        GUI_Reproductor gui_reproductor = new GUI_Reproductor();
+        gui_reproductor.setVisible(true);
 
-    }//fin main
+
+    }//main
+
+
+
 }//fin clase
