@@ -1,5 +1,8 @@
 package Clases;
 
+/***
+ * Clase donde le almacenara los usuarios
+ */
 public class Usuario {
     private String nombreCompleto;
     private String correoElectronico;

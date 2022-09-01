@@ -2,11 +2,18 @@ package Listas;
 
 import Clases.Cancion;
 
+/***
+ * Nodo de ListaCanciones
+ */
 public class NodoCanciones {
     private Cancion data;
     private NodoCanciones next;
     private NodoCanciones prev;
 
+    /***
+     * Crea el nodo para la lista con una nueva cancion
+     * @param data cancion a ingresar en el nodo
+     */
     public NodoCanciones(Cancion data) {
         this.data = data;
         this.next = null;

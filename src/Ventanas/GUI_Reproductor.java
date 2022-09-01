@@ -1,5 +1,6 @@
 package Ventanas;
 
+import Listas.ListaCanciones;
 import Reproductor.Reproductor;
 
 import javax.swing.*;
@@ -8,11 +9,17 @@ import java.awt.event.ActionListener;
 
 public class GUI_Reproductor extends JFrame{
     public JPanel panelReproductor;
+    private ListaCanciones lista;
+    private Reproductor reproductor;
+
 
     /***
      * Este metodo genera la ventana para cargar componentes
+     * @param lista Lista de canciones inicial
      */
-    public GUI_Reproductor(){
+    public GUI_Reproductor(ListaCanciones lista){
+        this.lista = lista;
+        this.reproductor = new Reproductor(this.lista);
         this.setSize(530,200);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -86,8 +93,8 @@ public class GUI_Reproductor extends JFrame{
         ActionListener pauseBListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Reproductor reproductor1 = new Reproductor();
-                reproductor1.Pausar();
+
+                reproductor.Pausar();
             }
         };
         pausaB.addActionListener(pauseBListener);
@@ -95,8 +102,8 @@ public class GUI_Reproductor extends JFrame{
         ActionListener reproducirListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Reproductor reproductor1 = new Reproductor();
-                reproductor1.Reproducir("fondo.mp3");
+
+                reproductor.Reproducir();
             }
         };
         reproducir.addActionListener(reproducirListener);
@@ -104,16 +111,14 @@ public class GUI_Reproductor extends JFrame{
         ActionListener siguienteListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Reproductor reproductor1 = new Reproductor();
-                reproductor1.Siguente();
+                reproductor.Siguente();
             }
         };
         siguiente.addActionListener(siguienteListener);
         ActionListener anteriorListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Reproductor reproductor1 = new Reproductor();
-                reproductor1.Anterior();
+                reproductor.Anterior();
             }
         };
         anterior.addActionListener(anteriorListener);
@@ -121,8 +126,7 @@ public class GUI_Reproductor extends JFrame{
         ActionListener subirVolumenListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Reproductor reproductor1 = new Reproductor();
-                reproductor1.SubirVolumen();
+                reproductor.SubirVolumen();
             }
         };
         subirVolumen.addActionListener(subirVolumenListener);
@@ -130,8 +134,7 @@ public class GUI_Reproductor extends JFrame{
         ActionListener bajarVolumenListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Reproductor reproductor1 = new Reproductor();
-                reproductor1.BajarVolumen();
+                reproductor.BajarVolumen();
             }
         };
         bajarVolumen.addActionListener(bajarVolumenListener);
@@ -144,7 +147,7 @@ public class GUI_Reproductor extends JFrame{
      * Este metodo crea y pega las etiquetas
      */
     private void colocarEtiquetas(){
-        JLabel nombreCancion = new JLabel("Cancion");
+        JLabel nombreCancion = new JLabel(reproductor.getCancionActual());
         nombreCancion.setBounds(230,5,100,40);
 
         panelReproductor.add(nombreCancion);

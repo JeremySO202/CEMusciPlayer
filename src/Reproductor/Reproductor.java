@@ -1,6 +1,5 @@
 package Reproductor;
 
-import Clases.Cancion;
 import Listas.ListaCanciones;
 import Listas.NodoCanciones;
 import javafx.scene.media.Media;
@@ -8,17 +7,28 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
+/***
+ * Clase donde se crean las funcioens necesarias para nuestro reproductor
+ */
 public class Reproductor {
     private MediaPlayer reproductor;
     private ListaCanciones lista;
     private NodoCanciones cancionActual;
 
+    /***
+     * Metodo constructor de Reproductor
+     * @param lista lista de canciones que se reproduciran
+     */
     public Reproductor(ListaCanciones lista) {
         this.lista = lista;
         this.cancionActual = lista.getHead();
         NuevaCancion(this.cancionActual.getData().getDireccion());
     }
 
+    /***
+     * Cambia la cancion que se esta reproduciendo en el reproducor
+     * @param nombreArchivo nombre de la nueva ruta a usar
+     */
     public void NuevaCancion(String nombreArchivo){
         com.sun.javafx.application.PlatformImpl.startup(()->{});
 
@@ -33,6 +43,10 @@ public class Reproductor {
 
 
     }
+
+    /***
+     * Reproduce la cancion que este actualmente
+     */
     public void Reproducir(){
         new Thread(){
             public void run() {
@@ -40,20 +54,29 @@ public class Reproductor {
             }
         }.start();
     }
+
+    /***
+     * Pausa la cancion que esta sonando actualmente
+     */
     public void Pausar(){
         reproductor.pause();
     }
+
+    /***
+     * Avanza a la siguente cancion de la lista
+     */
     public void Siguente(){
         this.cancionActual=this.cancionActual.getNext();
         reproductor.stop();
-        System.out.println(this.cancionActual.getData().getDireccion());
         NuevaCancion(this.cancionActual.getData().getDireccion());
     }
+
+    /***
+     * Avanza a la anterior cancion de la lista
+     */
     public void Anterior(){
-        System.out.println(this.cancionActual.getPrev().getPrev().getData().getDireccion());
         this.cancionActual=this.cancionActual.getPrev();
         reproductor.stop();
-        System.out.println(this.cancionActual.getData().getDireccion());
         NuevaCancion(this.cancionActual.getData().getDireccion());
 
     }
@@ -63,4 +86,10 @@ public class Reproductor {
     public void BajarVolumen(){
         System.out.printf("BajarVolumen");
     }
+
+    /***
+     * Devuelve el nombre de la cancion que esta siendo reproducida
+     * @return string del nombre de la cancion
+     */
+    public String getCancionActual(){return cancionActual.getData().getNombre();};
 }
