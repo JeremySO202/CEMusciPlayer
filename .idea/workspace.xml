@@ -1,29 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="CUSTOM_SCOPE_NAME" value="Current File" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee7eb185-4c30-438e-87cc-b7458c045c7d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Recursos/Canciones/The Oh Hellos： Bitter Water.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recursos/Canciones/The Oh Hellos： Danse Macabre.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recursos/Canciones/The Oh Hellos： Dear Wormwood.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recursos/Canciones/The Oh Hellos： Exeunt.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recursos/Canciones/The Oh Hellos： In the Blue Hours of Morning.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recursos/Canciones/The Oh Hellos： Prelude.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recursos/Canciones/The Oh Hellos： Soldier, Poet, King.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recursos/Canciones/The Oh Hellos： There Beneath.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recursos/Canciones/The Oh Hellos： Thus Always to Tyrants.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recursos/Canciones/Fondo.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recursos/Canciones/Fondo2.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recursos/Canciones/Fondo3.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Biblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Biblioteca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Cancion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Cancion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listas/ListaCanciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listas/ListaCanciones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listas/NodoCanciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listas/NodoCanciones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Reproductor/Reproductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reproductor/Reproductor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" afterDir="false" />
     </list>
@@ -60,6 +47,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
@@ -71,6 +59,11 @@
       <recent name="C:\Users\Dani2\OneDrive\Documentos\GitHub\CEMusciPlayer\src\Ventanas" />
       <recent name="C:\Users\Dani2\OneDrive\Documentos\GitHub\CEMusciPlayer\src" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="Main" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -101,6 +94,8 @@
       <workItem from="1661887845175" duration="4472000" />
       <workItem from="1661897544943" duration="1407000" />
       <workItem from="1661999354353" duration="5121000" />
+      <workItem from="1662485509405" duration="2816000" />
+      <workItem from="1662489182050" duration="1018000" />
     </task>
     <servers />
   </component>

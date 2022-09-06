@@ -13,6 +13,7 @@ public class GUI_Reproductor extends JFrame{
     private Reproductor reproductor;
 
 
+
     /***
      * Este metodo genera la ventana para cargar componentes
      * @param lista Lista de canciones inicial
@@ -95,6 +96,7 @@ public class GUI_Reproductor extends JFrame{
             public void actionPerformed(ActionEvent e) {
 
                 reproductor.Pausar();
+
             }
         };
         pausaB.addActionListener(pauseBListener);
@@ -104,6 +106,8 @@ public class GUI_Reproductor extends JFrame{
             public void actionPerformed(ActionEvent e) {
 
                 reproductor.Reproducir();
+                colocarEtiquetas();
+
             }
         };
         reproducir.addActionListener(reproducirListener);
@@ -112,6 +116,7 @@ public class GUI_Reproductor extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 reproductor.Siguente();
+                colocarEtiquetas();
             }
         };
         siguiente.addActionListener(siguienteListener);
@@ -119,6 +124,7 @@ public class GUI_Reproductor extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 reproductor.Anterior();
+                colocarEtiquetas();
             }
         };
         anterior.addActionListener(anteriorListener);
@@ -148,7 +154,7 @@ public class GUI_Reproductor extends JFrame{
      */
     private void colocarEtiquetas(){
         JLabel nombreCancion = new JLabel(reproductor.getCancionActual());
-        nombreCancion.setBounds(230,5,100,40);
+        nombreCancion.setBounds(180,5,200,40);
 
         panelReproductor.add(nombreCancion);
     }//colocarVentanas

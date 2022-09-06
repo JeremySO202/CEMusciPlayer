@@ -2,6 +2,7 @@ package Reproductor;
 
 import Listas.ListaCanciones;
 import Listas.NodoCanciones;
+import javafx.embed.swing.JFXPanel;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -11,6 +12,7 @@ import java.io.File;
  * Clase donde se crean las funcioens necesarias para nuestro reproductor
  */
 public class Reproductor {
+    JFXPanel fxPanel = new JFXPanel();
     private MediaPlayer reproductor;
     private ListaCanciones lista;
     private NodoCanciones cancionActual;
@@ -30,7 +32,7 @@ public class Reproductor {
      * @param nombreArchivo nombre de la nueva ruta a usar
      */
     public void NuevaCancion(String nombreArchivo){
-        com.sun.javafx.application.PlatformImpl.startup(()->{});
+
 
         final String PATH = "Recursos/Canciones/" + nombreArchivo;
         File archivo = new File(PATH);
@@ -69,6 +71,7 @@ public class Reproductor {
         this.cancionActual=this.cancionActual.getNext();
         reproductor.stop();
         NuevaCancion(this.cancionActual.getData().getDireccion());
+
     }
 
     /***
@@ -81,10 +84,21 @@ public class Reproductor {
 
     }
     public void SubirVolumen(){
-        System.out.printf("SubirVolumen");
+        double volumen = reproductor.getVolume();
+        if (volumen < 1){
+            reproductor.setVolume(volumen+0.2);
+        }
+        System.out.println(volumen);
+
     }
     public void BajarVolumen(){
-        System.out.printf("BajarVolumen");
+        double volumen = reproductor.getVolume();
+        if (volumen > 0){
+            reproductor.setVolume(volumen-0.2);
+
+        }
+        System.out.println(volumen);
+
     }
 
     /***
