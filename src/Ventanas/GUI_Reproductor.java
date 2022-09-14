@@ -11,6 +11,7 @@ public class GUI_Reproductor extends JFrame{
     public JPanel panelReproductor;
     private ListaCanciones lista;
     private Reproductor reproductor;
+    private JLabel nombreCancion;
 
 
 
@@ -98,9 +99,7 @@ public class GUI_Reproductor extends JFrame{
         ActionListener pauseBListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 reproductor.Pausar();
-
             }
         };
         pausaB.addActionListener(pauseBListener);
@@ -110,7 +109,7 @@ public class GUI_Reproductor extends JFrame{
             public void actionPerformed(ActionEvent e) {
 
                 reproductor.Reproducir();
-                colocarEtiquetas();
+                nombreCancion.setText(reproductor.getCancionActual());
 
             }
         };
@@ -120,7 +119,7 @@ public class GUI_Reproductor extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 reproductor.Siguente();
-                colocarEtiquetas();
+                nombreCancion.setText(reproductor.getCancionActual());
             }
         };
         siguiente.addActionListener(siguienteListener);
@@ -128,7 +127,7 @@ public class GUI_Reproductor extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 reproductor.Anterior();
-                colocarEtiquetas();
+                nombreCancion.setText(reproductor.getCancionActual());
             }
         };
         anterior.addActionListener(anteriorListener);
@@ -157,7 +156,7 @@ public class GUI_Reproductor extends JFrame{
      * Este metodo crea y pega las etiquetas
      */
     private void colocarEtiquetas(){
-        JLabel nombreCancion = new JLabel(reproductor.getCancionActual());
+        nombreCancion = new JLabel(reproductor.getCancionActual());
         nombreCancion.setBounds(180,5,200,40);
 
         panelReproductor.add(nombreCancion);

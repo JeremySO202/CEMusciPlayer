@@ -50,6 +50,17 @@ public class ListaBibliotecas {
 
     }
 
+    public Biblioteca buscarNombre(String nombre){
+        NodoBibliotecas temp = head;
+        while (temp!=null){
+            if (temp.getData().getNombre() == nombre){
+                return temp.getData();
+            }
+            temp = temp.getNext();
+        }
+        return null;
+    }
+
     public NodoBibliotecas getHead() {
         return head;
     }
