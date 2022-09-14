@@ -4,6 +4,8 @@ import Listas.Bibliotecas.ListaBibliotecas;
 import Listas.Bibliotecas.NodoBibliotecas;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.util.ArrayList;
 
 public class GUI_Bibliotecas extends JFrame{
@@ -17,6 +19,7 @@ public class GUI_Bibliotecas extends JFrame{
     public GUI_Bibliotecas(ListaBibliotecas listaBibliotecas){
         JFrame frame = new JFrame("Bibliotecas");
         frame.setContentPane(panel1);
+        frame.setSize(530,200);
         frame.pack();
         frame.setVisible(true);
         System.out.println(listaBibliotecas.getHead().getData().getNombre());
@@ -24,6 +27,12 @@ public class GUI_Bibliotecas extends JFrame{
         JList_Bibliotecas.setModel(modelo);
         cargarLista();
 
+        JList_Bibliotecas.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                System.out.println(JList_Bibliotecas.getSelectedValue().toString());
+            }
+        });
     }
 
     private void iniciarComponentes(){
@@ -35,6 +44,7 @@ public class GUI_Bibliotecas extends JFrame{
 
     private void cargarLista(){
         modelo.removeAllElements();
+        modelo.addElement("Todas");
         for (int i = 0; i < array.size(); i++) {
             modelo.addElement(array.get(i));
         }
@@ -48,7 +58,6 @@ public class GUI_Bibliotecas extends JFrame{
             array.add(temp.getData().getNombre());
             temp = temp.getNext();
         }
-        System.out.println(array);
         return array;
     }
 

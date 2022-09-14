@@ -8,19 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee7eb185-4c30-438e-87cc-b7458c045c7d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Listas/Bibliotecas/ListaBibliotecas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Listas/Bibliotecas/NodoBibliotecas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Biblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Biblioteca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listas/ListaCanciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listas/Canciones/ListaCanciones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Listas/NodoCanciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listas/Canciones/NodoCanciones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reproductor/Reproductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reproductor/Reproductor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.java" afterDir="false" />
     </list>
     <list id="c79cbc9b-8adc-4bcc-91c7-3778fd11b00f" name="Changes by Dani2" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,6 +103,9 @@
       <workItem from="1662655978048" duration="1632000" />
       <workItem from="1663022545435" duration="860000" />
       <workItem from="1663113448988" duration="1762000" />
+      <workItem from="1663127889846" duration="974000" />
+      <workItem from="1663128910248" duration="170000" />
+      <workItem from="1663129113649" duration="975000" />
     </task>
     <servers />
   </component>
