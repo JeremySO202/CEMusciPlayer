@@ -1,6 +1,6 @@
 package Ventanas;
 
-import Listas.ListaCanciones;
+import Listas.Canciones.ListaCanciones;
 import Reproductor.Reproductor;
 
 import javax.swing.*;
@@ -53,6 +53,10 @@ public class GUI_Reproductor extends JFrame{
         this.getContentPane().add(panelReproductor);
 
     }//colocarPanel
+
+    private void colocarCanciones(ListaCanciones lista){
+        
+    }
 
     /***
      * Este metodo crea y pega los botones en el panel

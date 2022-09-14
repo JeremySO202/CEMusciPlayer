@@ -1,6 +1,8 @@
+import Clases.Biblioteca;
 import Clases.Cancion;
-import Listas.ListaCanciones;
-import Ventanas.GUI_Reproductor;
+import Listas.Bibliotecas.ListaBibliotecas;
+import Listas.Canciones.ListaCanciones;
+import Ventanas.GUI_Bibliotecas;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,12 +16,19 @@ public class Main {
         lista.insertarInicio(new Cancion("The Oh Hellos： There Beneath","The Oh Hellos： There Beneath.mp3"));
         lista.insertarInicio(new Cancion("The Oh Hellos： Soldier, Poet, King","The Oh Hellos： Soldier, Poet, King.mp3"));
         lista.insertarInicio(new Cancion("The Oh Hellos： Prelude","The Oh Hellos： Prelude.mp3"));
+        ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
+        listaBibliotecas.insertarInicio(new Biblioteca("B1", lista));
+        listaBibliotecas.insertarInicio(new Biblioteca("B2", lista));
+        listaBibliotecas.insertarInicio(new Biblioteca("B3", lista));
+        listaBibliotecas.insertarInicio(new Biblioteca("B4", lista));
+        listaBibliotecas.insertarInicio(new Biblioteca("B5", lista));
 
 
         //TODO GUI
 
-        GUI_Reproductor gui_reproductor = new GUI_Reproductor(lista);
-        gui_reproductor.setVisible(true);
+        GUI_Bibliotecas gui_bibliotecas = new GUI_Bibliotecas(listaBibliotecas);
+//        GUI_Reproductor gui_reproductor = new GUI_Reproductor(lista);
+//        gui_reproductor.setVisible(true);
 
 
     }//main
