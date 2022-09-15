@@ -1,6 +1,8 @@
 package Ventanas;
 
 import Clases.Usuario;
+import Lectores.LectorCSV;
+import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
 import javax.swing.*;
@@ -8,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ public class GUI_RegistroUsuario extends JFrame {
 
     public JPanel panelRegistroUsuario;
     private Usuario usuario;
+    public LectorCSV lectorcsv;
+
 
     /***
      * Este es el constructor de la clase GUI_RegistroUsuario
@@ -27,15 +32,9 @@ public class GUI_RegistroUsuario extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("Registro");
-
+        this.lectorcsv = new LectorCSV();
         iniciarComponentesRegistro();
     }//constructor
-
-//    public void rellenarCSV(){
-//        List<Usuario> usuarios = new ArrayList<Usuario>();
-//        usuarios.add(new Usuario("Juan","Naranjo","naranjo@gmail.com","Cartago","asdf"));
-//        escribirCSV(usuarios);
-//    }//rellenarCSV
 
     /***
      * Este metodo crea los componentes para la ventana de Registro
@@ -49,8 +48,8 @@ public class GUI_RegistroUsuario extends JFrame {
 
         //Label Nombre
         JLabel nombreLbl = new JLabel("Nombre: ");
-        nombreLbl.setBounds(50,0,200,30);
-        nombreLbl.setFont(new Font("arial",Font.PLAIN,20 ));
+        nombreLbl.setBounds(50,10,200,30);
+        nombreLbl.setFont(new Font("berlin sans fb",Font.PLAIN,20 ));
         panelRegistroUsuario.add(nombreLbl);
 
         //Field Nombre
@@ -60,8 +59,8 @@ public class GUI_RegistroUsuario extends JFrame {
 
         //Label Apellido
         JLabel apellidoLbl = new JLabel("Apellido: ");
-        apellidoLbl.setBounds(50,90,200,30);
-        apellidoLbl.setFont(new Font("arial",Font.PLAIN,20 ));
+        apellidoLbl.setBounds(50,100,200,30);
+        apellidoLbl.setFont(new Font("berlin sans fb",Font.PLAIN,20 ));
         panelRegistroUsuario.add(apellidoLbl);
 
         //Field Apellido
@@ -71,8 +70,8 @@ public class GUI_RegistroUsuario extends JFrame {
 
         //Label Correo
         JLabel correoLbl = new JLabel("Correo: ");
-        correoLbl.setBounds(50,180,200,30);
-        correoLbl.setFont(new Font("arial",Font.PLAIN,20 ));
+        correoLbl.setBounds(50,190,200,30);
+        correoLbl.setFont(new Font("berlin sans fb",Font.PLAIN,20 ));
         panelRegistroUsuario.add(correoLbl);
 
         //Field Correo
@@ -80,18 +79,17 @@ public class GUI_RegistroUsuario extends JFrame {
         correoField.setBounds(50,230,200,30);
         panelRegistroUsuario.add(correoField);
 
-
-        //
-        String [] paises = {"San Jose", "Cartago", "Limon", "Alajuela" , "Guanacaste", "Puntarenas", "Heredia"};
+        //Lista de países
+        String [] paises = {"Provincia:","San Jose", "Cartago", "Limon", "Alajuela" , "Guanacaste", "Puntarenas", "Heredia"};
         JComboBox listaProvincias = new JComboBox(paises);
-        listaProvincias.setBounds(300,270,100,30);
+        listaProvincias.setBounds(300,50,150,30);
+        listaProvincias.setFont(new Font("berlin sans fb",Font.PLAIN,15 ));
         panelRegistroUsuario.add(listaProvincias);
-
 
         //Label Contraseña
         JLabel contraseñaLbl = new JLabel("Contraseña: ");
-        contraseñaLbl.setBounds(50,270,200,30);
-        contraseñaLbl.setFont(new Font("arial",Font.PLAIN,20 ));
+        contraseñaLbl.setBounds(50,280,200,30);
+        contraseñaLbl.setFont(new Font("berlin sans fb",Font.PLAIN,20 ));
         panelRegistroUsuario.add(contraseñaLbl);
 
         //Field Contraseña
@@ -102,14 +100,37 @@ public class GUI_RegistroUsuario extends JFrame {
         //Boton de registro
         JButton registroBtn = new JButton("Registrar");
         registroBtn.setBounds(300,380,150,40);
+        registroBtn.setFont(new Font("berlin sans fb",Font.PLAIN,20 ));
         panelRegistroUsuario.add(registroBtn);
 
         ActionListener registroBtnListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                while (nombreField.getText().equals("") || apellidoField.getText().equals("") ||
+                        correoField.getText().equals("") || contraseñaField.getText().equals("")||
+                        listaProvincias.getSelectedItem().equals("Provincia:")){
+                    JOptionPane.showMessageDialog(null,"Dejaste un espacio en blanco");
+                    return;
+                }//while
+                //Extraccion de usuarios del archivo csv
+                List<Usuario> usuariosRegistrados = lectorcsv.extraerUsuarios();
+
+                for (int i = 0; i < usuariosRegistrados.size(); i++) {
+                    if(usuariosRegistrados.get(i).getNombre().equals( nombreField.getText())){
+                        JOptionPane.showMessageDialog(null,"Este usuario ya está registrado");
+                        return ;
+                    }
+                }
+
                 List<Usuario> usuarios = new ArrayList<Usuario>();
                 usuarios.add(new Usuario(nombreField.getText(),apellidoField.getText(),correoField.getText(), (String) listaProvincias.getSelectedItem(),contraseñaField.getText()));
                 escribirCSV(usuarios);
+                dispose();
+                GUI_InicioSesion gui_inicioSesion = new GUI_InicioSesion();
+                gui_inicioSesion.setVisible(true);
+
+
+
                 }
         };
         registroBtn.addActionListener(registroBtnListener);
@@ -153,7 +174,7 @@ public class GUI_RegistroUsuario extends JFrame {
                 salidaCSV.write("Apellidos");
                 salidaCSV.write("Correo");
                 salidaCSV.write("Provincia");
-                salidaCSV.write("Contraseña");
+                salidaCSV.write("Contrasena");
 
 
                 salidaCSV.endRecord();
@@ -180,7 +201,6 @@ public class GUI_RegistroUsuario extends JFrame {
 
 
     }//escribirCSV
-
 
 
 }//Fin clase

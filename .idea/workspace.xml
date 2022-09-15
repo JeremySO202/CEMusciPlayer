@@ -7,6 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="ee7eb185-4c30-438e-87cc-b7458c045c7d" name="Changes" comment="">
 
       <change afterPath="$PROJECT_DIR$/.idea/libraries/javacsv.xml" afterDir="false" />
@@ -22,6 +23,17 @@
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" afterDir="false" />
 
+=======
+    <list default="true" id="54997256-fe4f-4bf5-96cb-1f9b06465de7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Lectores/LectorCSV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javacsv.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/javacsv.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEMusciPlayer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CEMusciPlayer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Usuarios.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_InicioSesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_InicioSesion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_RegistroUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_RegistroUsuario.java" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <list id="c79cbc9b-8adc-4bcc-91c7-3778fd11b00f" name="Changes by Dani2" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,9 +44,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< Updated upstream
         <option value="Class" />
         <option value="Tag Library Descriptor" />
+=======
+        <option value="FxmlFile" />
+>>>>>>> Stashed changes
         <option value="base_xml.xml" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,7 +61,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectId" id="2E2k40BhYC6oQrWpAB6yOOnqSXb" />
+=======
+  <component name="ProjectId" id="2EnItUrF9G5acC7hHMoIwGAzffd" />
+>>>>>>> Stashed changes
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -52,6 +73,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
 
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
@@ -124,6 +146,27 @@
       <workItem from="1663128910248" duration="170000" />
       <workItem from="1663129113649" duration="975000" />
       <workItem from="1663192070947" duration="4406000" />
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Usuario/Documents/javacsv.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.22207446",
+    "project.structure.side.proportion": "0.30407524"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="54997256-fe4f-4bf5-96cb-1f9b06465de7" name="Changes" comment="" />
+      <created>1663225153579</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663225153579</updated>
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

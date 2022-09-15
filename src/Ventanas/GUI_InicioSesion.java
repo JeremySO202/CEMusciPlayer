@@ -1,25 +1,37 @@
 package Ventanas;
 
 import Clases.Cancion;
+<<<<<<< Updated upstream
 import Listas.ListaCanciones;
+=======
+import Clases.Usuario;
+import Lectores.LectorCSV;
+import Lectores.LectorXML;
+import Listas.Bibliotecas.ListaBibliotecas;
+import Listas.Canciones.ListaCanciones;
+
+>>>>>>> Stashed changes
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class GUI_InicioSesion extends JFrame {
     public JPanel panelInicioSesion;
     public JTextField usuarioField;
+    public LectorCSV lectorcsv;
 
     /***
      * Este es el contructor de la clase GUI_InicioSesio
      */
     public GUI_InicioSesion() {
-        this.setSize(520,500);
+        this.setSize(500,400);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("Registro");
+        this.lectorcsv = new LectorCSV();
         iniciarComponentesInicioSesion();
     }//constructor
 
@@ -34,12 +46,10 @@ public class GUI_InicioSesion extends JFrame {
         panelInicioSesion.setLayout(null);
         this.getContentPane().add(panelInicioSesion);
 
-        //Componentes
-
         //Label Usuario
-        JLabel usuarioLbl = new JLabel("Ingrese el usuario");
-        usuarioLbl.setBounds(160,0,200,40);
-        usuarioLbl.setFont(new Font("arial",Font.PLAIN,20 ));
+        JLabel usuarioLbl = new JLabel("Ingrese el usuario:");
+        usuarioLbl.setBounds(140,10,200,30);
+        usuarioLbl.setFont(new Font("berlin sans fb",Font.PLAIN,20 ));
         panelInicioSesion.add(usuarioLbl);
 
         //Barra de escritura usuario
@@ -47,33 +57,34 @@ public class GUI_InicioSesion extends JFrame {
         usuarioField.setBounds(142,50,200,30);
         panelInicioSesion.add(usuarioField);
 
-
-
-        //Etiqueta Contraseña
-        JLabel contraseñaLbl = new JLabel("Ingrese la contraseña");
-        contraseñaLbl.setBounds(148,90,200,40);
-        contraseñaLbl.setFont(new Font("arial",Font.PLAIN,20 ));
+        //Label Contraseña
+        JLabel contraseñaLbl = new JLabel("Ingrese la contraseña:");
+        contraseñaLbl.setBounds(148,100,200,30);
+        contraseñaLbl.setFont(new Font("berlin sans fb",Font.PLAIN,20 ));
         panelInicioSesion.add(contraseñaLbl);
 
         //Barra de escritura contraseña
-        JPasswordField contraseñaField = new JPasswordField();
-        contraseñaField.setBounds(142,140,200,30);
-        panelInicioSesion.add(contraseñaField);
+        JPasswordField contrasenaField = new JPasswordField();
+        contrasenaField.setBounds(142,140,200,30);
+        panelInicioSesion.add(contrasenaField);
 
         //Boton de Inicio de sesion
         JButton inicioSesionBtn = new JButton("Iniciar Sesion");
         inicioSesionBtn.setBounds(70,190,150,40);
+        inicioSesionBtn.setFont(new Font("berlin sans fb",Font.PLAIN,20 ));
         panelInicioSesion.add(inicioSesionBtn);
 
         //Boton de registrro
         JButton registroBtn = new JButton("Registrar");
         registroBtn.setBounds(270,190,150,40);
+        registroBtn.setFont(new Font("berlin sans fb",Font.PLAIN,20 ));
         panelInicioSesion.add(registroBtn);
 
         //inisioSesionbtn Actionlistener
         ActionListener inicioSesionBtnListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+<<<<<<< Updated upstream
                 if(usuarioField.getText().equals("")){
                     JOptionPane.showMessageDialog(null,"No ingresó el usuario");
                 }if (contraseñaField.getText().equals("")){
@@ -94,8 +105,33 @@ public class GUI_InicioSesion extends JFrame {
                     GUI_Reproductor gui_reproductor = new GUI_Reproductor(lista);
                     gui_reproductor.setVisible(true);
                 }
+=======
+                while(usuarioField.getText().equals("") || contrasenaField.getText().equals("")){
+                    JOptionPane.showMessageDialog(null,"Tienes que ingresar los datod completos");
+                    return;
+                }
+                List<Usuario> usuariosRegistrados = lectorcsv.extraerUsuarios();
 
-            }
+                for (int i = 0; i < usuariosRegistrados.size(); i++) {
+                    if (usuariosRegistrados.get(i).getNombre().equals(usuarioField.getText()) && usuariosRegistrados.get(i).getContrasena().equals(contrasenaField.getText())) {
+                        dispose();
+                        ListaCanciones lista = LectorXML.leerXML();
+                        ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
+                        listaBibliotecas.insertarInicio(new Biblioteca("Playlist 1", lista));
+                        GUI_Bibliotecas gui_bibliotecas = new GUI_Bibliotecas(listaBibliotecas);
+                        return;
+                    }
+                    JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+                    return;
+
+                }//for
+
+
+//                    GUI_Reproductor gui_reproductor = new GUI_Reproductor(lista);
+//                    gui_reproductor.setVisible(true);
+>>>>>>> Stashed changes
+
+            }//actionPerformed
         };
         inicioSesionBtn.addActionListener(inicioSesionBtnListener);
 

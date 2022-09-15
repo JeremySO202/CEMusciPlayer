@@ -7,7 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< Updated upstream
     <orderEntry type="library" name="javacsv" level="project" />
+=======
+>>>>>>> Stashed changes
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="javacsv" level="project" />
   </component>
 </module>
