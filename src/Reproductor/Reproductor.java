@@ -1,7 +1,7 @@
 package Reproductor;
 
-import Listas.ListaCanciones;
-import Listas.NodoCanciones;
+import Listas.Canciones.ListaCanciones;
+import Listas.Canciones.NodoCanciones;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -33,7 +33,6 @@ public class Reproductor {
      */
     public void NuevaCancion(String nombreArchivo){
 
-
         final String PATH = "Recursos/Canciones/" + nombreArchivo;
         File archivo = new File(PATH);
 
@@ -41,9 +40,6 @@ public class Reproductor {
 
         this.reproductor = new MediaPlayer(audio);
         Reproducir();
-
-
-
     }
 
     /***
@@ -84,18 +80,19 @@ public class Reproductor {
 
     }
     public void SubirVolumen(){
-        double volumen = reproductor.getVolume();
-        if (volumen < 1){
-            reproductor.setVolume(volumen+0.2);
+        double volumen = reproductor.getVolume()*100;
+        if (volumen < 100){
+            volumen= volumen + 20;
+            reproductor.setVolume(volumen/100);
         }
         System.out.println(volumen);
 
     }
     public void BajarVolumen(){
-        double volumen = reproductor.getVolume();
+        double volumen = reproductor.getVolume()*100;
         if (volumen > 0){
-            reproductor.setVolume(volumen-0.2);
-
+            volumen = volumen - 20;
+            reproductor.setVolume(volumen/100);
         }
         System.out.println(volumen);
 

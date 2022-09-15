@@ -1,6 +1,6 @@
 package Ventanas;
 
-import Listas.ListaCanciones;
+import Listas.Canciones.ListaCanciones;
 import Reproductor.Reproductor;
 
 import javax.swing.*;
@@ -11,6 +11,7 @@ public class GUI_Reproductor extends JFrame{
     public JPanel panelReproductor;
     private ListaCanciones lista;
     private Reproductor reproductor;
+    private JLabel nombreCancion;
 
 
 
@@ -54,6 +55,10 @@ public class GUI_Reproductor extends JFrame{
 
     }//colocarPanel
 
+    private void colocarCanciones(ListaCanciones lista){
+        
+    }
+
     /***
      * Este metodo crea y pega los botones en el panel
      * Este metodo incluye los actionlistener de todos los botones
@@ -94,9 +99,7 @@ public class GUI_Reproductor extends JFrame{
         ActionListener pauseBListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 reproductor.Pausar();
-
             }
         };
         pausaB.addActionListener(pauseBListener);
@@ -106,7 +109,7 @@ public class GUI_Reproductor extends JFrame{
             public void actionPerformed(ActionEvent e) {
 
                 reproductor.Reproducir();
-                colocarEtiquetas();
+                nombreCancion.setText(reproductor.getCancionActual());
 
             }
         };
@@ -115,8 +118,9 @@ public class GUI_Reproductor extends JFrame{
         ActionListener siguienteListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                colocarEtiquetas();
+
                 reproductor.Siguente();
+                nombreCancion.setText(reproductor.getCancionActual());
 
             }
         };
@@ -124,8 +128,9 @@ public class GUI_Reproductor extends JFrame{
         ActionListener anteriorListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                colocarEtiquetas();
+
                 reproductor.Anterior();
+                nombreCancion.setText(reproductor.getCancionActual());
 
             }
         };
@@ -155,7 +160,7 @@ public class GUI_Reproductor extends JFrame{
      * Este metodo crea y pega las etiquetas
      */
     private void colocarEtiquetas(){
-        JLabel nombreCancion = new JLabel(reproductor.getCancionActual());
+        nombreCancion = new JLabel(reproductor.getCancionActual());
         nombreCancion.setBounds(180,5,200,40);
 
         panelReproductor.add(nombreCancion);

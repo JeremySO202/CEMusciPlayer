@@ -8,6 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee7eb185-4c30-438e-87cc-b7458c045c7d" name="Changes" comment="">
+
       <change afterPath="$PROJECT_DIR$/.idea/libraries/javacsv.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
@@ -20,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/src/Clases/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Usuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" afterDir="false" />
+
     </list>
     <list id="c79cbc9b-8adc-4bcc-91c7-3778fd11b00f" name="Changes by Dani2" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Tag Library Descriptor" />
+        <option value="base_xml.xml" />
       </list>
     </option>
   </component>
@@ -48,6 +52,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -60,10 +65,15 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CEMusciPlayer\src\Listas\Bibliotecas" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CEMusciPlayer" />
       <recent name="C:\Users\Dani2\OneDrive\Documentos\GitHub\CEMusciPlayer\Recursos\Canciones" />
       <recent name="C:\Users\Dani2\OneDrive\Documentos\GitHub\CEMusciPlayer\src\Ventanas" />
       <recent name="C:\Users\Dani2\OneDrive\Documentos\GitHub\CEMusciPlayer\src" />
@@ -105,6 +115,15 @@
       <workItem from="1661999354353" duration="5121000" />
       <workItem from="1662485509405" duration="2816000" />
       <workItem from="1662489182050" duration="1018000" />
+      <workItem from="1662653443261" duration="1308000" />
+      <workItem from="1662654810190" duration="1068000" />
+      <workItem from="1662655978048" duration="1632000" />
+      <workItem from="1663022545435" duration="860000" />
+      <workItem from="1663113448988" duration="1762000" />
+      <workItem from="1663127889846" duration="974000" />
+      <workItem from="1663128910248" duration="170000" />
+      <workItem from="1663129113649" duration="975000" />
+      <workItem from="1663192070947" duration="4406000" />
     </task>
     <servers />
   </component>
@@ -126,6 +145,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StackOverflowError" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Listas.ListaCanciones" memberName="head" />
@@ -137,5 +164,9 @@
         <watch expression="((NodoCanciones)this).data" custom="Listas.NodoCanciones" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

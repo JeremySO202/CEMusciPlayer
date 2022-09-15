@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Canciones>
+    <Cancion>
+        <Nombre>The Oh Hellos： Bitter Water</Nombre>
+        <Direccion>The Oh Hellos： Bitter Water.mp3</Direccion>
+    </Cancion>
+    <Cancion>
+        <Nombre>The Oh Hellos： Danse Macabre</Nombre>
+        <Direccion>The Oh Hellos： Danse Macabre.mp3</Direccion>
+    </Cancion>
+    <Cancion>
+        <Nombre>The Oh Hellos： Dear Wormwood</Nombre>
+        <Direccion>The Oh Hellos： Dear Wormwood.mp3</Direccion>
+    </Cancion>
+</Canciones>
