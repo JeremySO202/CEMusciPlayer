@@ -7,20 +7,20 @@ public class Usuario {
     private String nombreCompleto;
     private String correoElectronico;
     private String provincia;
-    private String contraseña;
+    private String contrasena;
 
     /***
      *Constructor de la clase Usuario
      * @param nombreCompleto nombre del usuario a registrar
      * @param correoElectronico correo de la persona a regitrar
      * @param provincia provincia en la que vive el usuario
-     * @param contraseña constraseña que registra el usuario
+     * @param contrasena constraseña que registra el usuario
      */
-    public Usuario(String nombreCompleto, String correoElectronico, String provincia, String contraseña) {
+    public Usuario(String nombreCompleto, String correoElectronico, String provincia, String contrasena) {
         this.nombreCompleto = nombreCompleto;
         this.correoElectronico = correoElectronico;
         this.provincia = provincia;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
     }
 
     public String getNombreCompleto() {
@@ -47,11 +47,11 @@ public class Usuario {
         this.provincia = provincia;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 }//fin clase usuario
