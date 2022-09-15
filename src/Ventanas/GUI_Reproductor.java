@@ -27,10 +27,10 @@ public class GUI_Reproductor extends JFrame{
         this.setLocationRelativeTo(null);
         this.setTitle("Reproductor");
 
-        JButton pause = new JButton();
-        pause.setText("Pause");
-        pause.setBounds(100,100,100,40);
-        pause.setEnabled(true);
+        //JButton pause = new JButton();
+        //pause.setText("Pause");
+        //pause.setBounds(100,100,100,40);
+        //pause.setEnabled(true);
         iniciarComponentes();
     }//GUI_Reproductor
 
@@ -118,16 +118,20 @@ public class GUI_Reproductor extends JFrame{
         ActionListener siguienteListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 reproductor.Siguente();
                 nombreCancion.setText(reproductor.getCancionActual());
+
             }
         };
         siguiente.addActionListener(siguienteListener);
         ActionListener anteriorListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 reproductor.Anterior();
                 nombreCancion.setText(reproductor.getCancionActual());
+
             }
         };
         anterior.addActionListener(anteriorListener);
