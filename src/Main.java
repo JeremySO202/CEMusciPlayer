@@ -4,6 +4,7 @@ import Clases.Cancion;
 import Listas.Bibliotecas.ListaBibliotecas;
 import Listas.Canciones.ListaCanciones;
 import Ventanas.GUI_Bibliotecas;
+import Ventanas.GUI_InicioSesion;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -72,11 +73,6 @@ public class Main {
         }
 
         ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
-        listaBibliotecas.insertarInicio(new Biblioteca("B1", lista));
-        listaBibliotecas.insertarInicio(new Biblioteca("B2", lista));
-        listaBibliotecas.insertarInicio(new Biblioteca("B3", lista));
-        listaBibliotecas.insertarInicio(new Biblioteca("B4", lista));
-        listaBibliotecas.insertarInicio(new Biblioteca("B5", lista2));
         listaBibliotecas.insertarInicio(new Biblioteca("XML", lista3));
         
          //TODO GUI

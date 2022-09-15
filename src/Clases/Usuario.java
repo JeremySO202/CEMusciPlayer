@@ -10,6 +10,8 @@ public class Usuario {
     private String provincia;
     private String contrasena;
 
+
+
     /***
      * Constructor de la clase Usuario
      * @param nombre nombre del usuario a registrar
