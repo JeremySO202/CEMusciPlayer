@@ -36,6 +36,7 @@ public class ListaBibliotecas {
      * @param data cancion a ingresar
      */
     public void insertarInicio(Biblioteca data){
+        System.out.println(data.getNombre());
         NodoBibliotecas nuevo = new NodoBibliotecas(data);
         if (vacia()){
             this.head = nuevo;
@@ -47,18 +48,30 @@ public class ListaBibliotecas {
             this.head = nuevo;
         }
         this.size++;
-
     }
 
     public Biblioteca buscarNombre(String nombre){
         NodoBibliotecas temp = head;
         while (temp!=null){
-            if (temp.getData().getNombre() == nombre){
+            if (temp.getData().getNombre().equals(nombre)){
                 return temp.getData();
             }
             temp = temp.getNext();
         }
         return null;
+    }
+
+    public void modificarPorNombre(Biblioteca modificada){
+        ListaBibliotecas nueva = new ListaBibliotecas();
+        NodoBibliotecas temp = head;
+        while (temp!=null){
+            if (temp.getData().getNombre().equals(modificada.getNombre())){
+                temp.setData(modificada);
+            }
+            nueva.insertarInicio(temp.getData());
+            temp = temp.getNext();
+        }
+        this.head = nueva.getHead();
     }
 
     public NodoBibliotecas getHead() {

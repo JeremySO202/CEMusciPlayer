@@ -2,17 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54997256-fe4f-4bf5-96cb-1f9b06465de7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Usuarios.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lectores/LectorXML.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javacsv.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/javacsv.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Recursos/Bibliotecas/den.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Recursos/Bibliotecas/ewq.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Recursos/Bibliotecas/jerem.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lectores/LectorCSV.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Editar_Cancion.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Editar_Cancion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEMusciPlayer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CEMusciPlayer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Canciones.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Canciones.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Usuarios.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Usuarios.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Usuarios.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Cancion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Cancion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lectores/LectorXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lectores/LectorXML.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listas/Bibliotecas/ListaBibliotecas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listas/Bibliotecas/ListaBibliotecas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listas/Canciones/ListaCanciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listas/Canciones/ListaCanciones.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_InicioSesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_InicioSesion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_RegistroUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_RegistroUsuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="base_xml.xml" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -34,18 +42,63 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectId" id="2EpENCuwVL270YIzMmDXLwQKMtM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "C:/Users/jerem/Downloads/javacsv.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.22207446",
-    "project.structure.side.proportion": "0.30407524"
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;201&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jerem/Downloads/javacsv.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.22207446&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.30407524&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CEMusciPlayer\Recursos\Bibliotecas" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="CEMusciPlayer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="54997256-fe4f-4bf5-96cb-1f9b06465de7" name="Changes" comment="" />
+      <created>1663284089175</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663284089175</updated>
+      <workItem from="1663284089486" duration="4000" />
+      <workItem from="1663284135604" duration="2083000" />
+      <workItem from="1663286270026" duration="14880000" />
+      <workItem from="1663350906875" duration="12382000" />
+      <workItem from="1663373437186" duration="637000" />
+      <workItem from="1663448893456" duration="2869000" />
+      <workItem from="1663451816773" duration="4227000" />
+    </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -61,6 +114,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

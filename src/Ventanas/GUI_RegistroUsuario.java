@@ -1,6 +1,10 @@
 package Ventanas;
 
+import Clases.Biblioteca;
 import Clases.Usuario;
+import Lectores.LectorXML;
+import Listas.Bibliotecas.ListaBibliotecas;
+import Listas.Canciones.ListaCanciones;
 import com.csvreader.CsvWriter;
 
 import javax.swing.*;
@@ -10,8 +14,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GUI_RegistroUsuario extends JFrame {
 
@@ -30,12 +32,6 @@ public class GUI_RegistroUsuario extends JFrame {
 
         iniciarComponentesRegistro();
     }//constructor
-
-//    public void rellenarCSV(){
-//        List<Usuario> usuarios = new ArrayList<Usuario>();
-//        usuarios.add(new Usuario("Juan","Naranjo","naranjo@gmail.com","Cartago","asdf"));
-//        escribirCSV(usuarios);
-//    }//rellenarCSV
 
     /***
      * Este metodo crea los componentes para la ventana de Registro
@@ -107,9 +103,8 @@ public class GUI_RegistroUsuario extends JFrame {
         ActionListener registroBtnListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<Usuario> usuarios = new ArrayList<Usuario>();
-                usuarios.add(new Usuario(nombreField.getText(),apellidoField.getText(),correoField.getText(), (String) listaProvincias.getSelectedItem(),contraseñaField.getText()));
-                escribirCSV(usuarios);
+                Usuario usuario = new Usuario(nombreField.getText(),apellidoField.getText(),correoField.getText(), (String) listaProvincias.getSelectedItem(),contraseñaField.getText());
+                escribirCSV(usuario);
                 }
         };
         registroBtn.addActionListener(registroBtnListener);
@@ -120,7 +115,7 @@ public class GUI_RegistroUsuario extends JFrame {
      * Este metodo va a escribir en el CSV para almacenar datos de los Usuarios
      * Datos tales como: Nombre, Apellido, Correo, Provincia, Contraseña
      */
-    public void escribirCSV(List<Usuario> usuarios){
+    public void escribirCSV(Usuario usuario){
         String salidaArchivo = "Usuarios.csv";
         boolean existe = new File(salidaArchivo).exists();
 
@@ -128,16 +123,14 @@ public class GUI_RegistroUsuario extends JFrame {
             File archivoUsuarios = new File(salidaArchivo);
             try{
                 CsvWriter salidaCSV = new CsvWriter(new FileWriter(salidaArchivo, true), ',');
-                for (Usuario user: usuarios) {
-                    salidaCSV.write(user.getNombre() );
-                    salidaCSV.write(user.getApellido() );
-                    salidaCSV.write(user.getCorreoElectronico());
-                    salidaCSV.write(user.getProvincia());
-                    salidaCSV.write(user.getContrasena());
 
+                salidaCSV.write(usuario.getNombre() );
+                salidaCSV.write(usuario.getApellido() );
+                salidaCSV.write(usuario.getCorreoElectronico());
+                salidaCSV.write(usuario.getProvincia());
+                salidaCSV.write(usuario.getContrasena());
+                salidaCSV.endRecord();
 
-                    salidaCSV.endRecord();
-                }
 
                 salidaCSV.close();
             }catch(IOException e){
@@ -155,21 +148,15 @@ public class GUI_RegistroUsuario extends JFrame {
                 salidaCSV.write("Provincia");
                 salidaCSV.write("Contraseña");
 
-
                 salidaCSV.endRecord();
 
+                salidaCSV.write(usuario.getNombre() );
+                salidaCSV.write(usuario.getApellido() );
+                salidaCSV.write(usuario.getCorreoElectronico());
+                salidaCSV.write(usuario.getProvincia());
+                salidaCSV.write(usuario.getContrasena());
+                salidaCSV.endRecord();
 
-
-                for (Usuario user: usuarios) {
-                    salidaCSV.write(user.getNombre() );
-                    salidaCSV.write(user.getApellido() );
-                    salidaCSV.write(user.getCorreoElectronico());
-                    salidaCSV.write(user.getProvincia());
-                    salidaCSV.write(user.getContrasena());
-
-
-                    salidaCSV.endRecord();
-                }
 
                 salidaCSV.close();
             }catch(IOException e){
@@ -177,7 +164,13 @@ public class GUI_RegistroUsuario extends JFrame {
 
             }//try-catch
         }//else
+        ListaCanciones listaCanciones = new ListaCanciones();
+        listaCanciones = LectorXML.leerXMLCanciones();
+        ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
+        listaBibliotecas.insertarInicio(new Biblioteca("Todas",listaCanciones));
+        LectorXML.creaBibliotecas(usuario.getCorreoElectronico(),listaBibliotecas);
 
+        //        "Recursos/Bibliotecas/"+correo+".xml"
 
     }//escribirCSV
 

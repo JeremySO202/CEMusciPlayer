@@ -20,67 +20,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-//        ListaCanciones lista = new ListaCanciones();
-//        lista.insertarInicio(new Cancion("The Oh Hellos： Bitter Water","The Oh Hellos： Bitter Water.mp3"));
-//        lista.insertarInicio(new Cancion("The Oh Hellos： Danse Macabre","The Oh Hellos： Danse Macabre.mp3"));
-//        lista.insertarInicio(new Cancion("The Oh Hellos： Dear Wormwood","The Oh Hellos： Dear Wormwood.mp3"));
-//        lista.insertarInicio(new Cancion("The Oh Hellos： Exeunt","The Oh Hellos： Exeunt.mp3"));
-//        lista.insertarInicio(new Cancion("The Oh Hellos： In the Blue Hours of Morning","The Oh Hellos： In the Blue Hours of Morning.mp3"));
-//        lista.insertarInicio(new Cancion("The Oh Hellos： Thus Always to Tyrants","The Oh Hellos： Thus Always to Tyrants.mp3"));
-//        lista.insertarInicio(new Cancion("The Oh Hellos： There Beneath","The Oh Hellos： There Beneath.mp3"));
-//        lista.insertarInicio(new Cancion("The Oh Hellos： Soldier, Poet, King","The Oh Hellos： Soldier, Poet, King.mp3"));
-//        lista.insertarInicio(new Cancion("The Oh Hellos： Prelude","The Oh Hellos： Prelude.mp3"));
-
-
-         
-
-        ListaCanciones lista3 = new ListaCanciones();
-
-        try{
-
-
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-
-            Document documento = builder.parse(new File("Canciones.xml"));
-
-            NodeList listaCanciones = documento.getElementsByTagName("Cancion");
-
-            for (int i = 0; i < listaCanciones.getLength(); i++) {
-                Node nodo = listaCanciones.item(i);
-                if (nodo.getNodeType() == Node.ELEMENT_NODE){
-                    Element e = (Element) nodo;
-                    NodeList hijos = e.getChildNodes();
-                    String nombre = "";
-                    String direccion = "";
-                    for (int j = 0; j < hijos.getLength(); j++) {
-                        Node hijo = hijos.item(j);
-                        if (hijo.getNodeType() == Node.ELEMENT_NODE){
-                            System.out.println(hijo.getNodeName()+"-"+hijo.getTextContent());
-                            if (hijo.getNodeName().equals("Nombre")){
-                                nombre = hijo.getTextContent();
-                            } else if (hijo.getNodeName().equals("Direccion")) {
-                                direccion = hijo.getTextContent();
-                            }
-                        }
-                    }
-                    lista3.insertarInicio(new Cancion(nombre, direccion));
-                }
-            }
-
-        } catch (ParserConfigurationException | SAXException | IOException ex){
-            System.out.println(ex.getMessage());
-        }
-
-        ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
-        listaBibliotecas.insertarInicio(new Biblioteca("XML", lista3));
-        
-         //TODO GUI
         GUI_InicioSesion gui_inicioSesion = new GUI_InicioSesion();
         gui_inicioSesion.setVisible(true);
-
-        
-
     }//main
 
 }//fin clase
