@@ -10,8 +10,6 @@ import Listas.Canciones.ListaCanciones;
 import Listas.Canciones.NodoCanciones;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -32,6 +30,10 @@ public class GUI_Bibliotecas extends JFrame{
     private JButton btnReproductor;
     private JTextField textFieldNombre;
     private JButton eliminarButton;
+    private JButton eliminarBibliotecaButton;
+    private JTextField entryNombrePlaylist;
+    private JTextField entryFechaPlaylist;
+    private JTextField entryCantidadPlaylist;
     private Biblioteca bibliotecaActual;
     private JFrame frame;
     private Cancion cancionSeleccionada;
@@ -42,14 +44,7 @@ public class GUI_Bibliotecas extends JFrame{
     public GUI_Bibliotecas(Usuario usuario){
         iniciarComponentes(usuario);
 
-        JList_Bibliotecas.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                System.out.println(JList_Bibliotecas.getSelectedValue().toString());
-                bibliotecaActual = listaBibliotecas.buscarNombre(JList_Bibliotecas.getSelectedValue().toString());
-                cargarTabla(bibliotecaActual);
-            }
-        });
+
         btnReproductor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,8 +75,8 @@ public class GUI_Bibliotecas extends JFrame{
                 listaBibliotecas = LectorXML.leerXMLBibliotecas(usuario.getCorreoElectronico());
                 bibliotecaActual = listaBibliotecas.buscarNombre(bibliotecaActual.getNombre());
                 conversor(listaBibliotecas);
-                cargarTabla(bibliotecaActual);
                 cargarLista();
+                cargarTabla(bibliotecaActual);
 
             }
         });
@@ -93,6 +88,26 @@ public class GUI_Bibliotecas extends JFrame{
                 bibliotecaActual.setListaCanciones(listaP);
                 listaBibliotecas.modificarPorNombre(bibliotecaActual);
                 LectorXML.creaBibliotecas(usuario.getCorreoElectronico(), listaBibliotecas);
+                cargarTabla(bibliotecaActual);
+            }
+        });
+        eliminarBibliotecaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!bibliotecaActual.getNombre().equals("Todas")){
+                    listaBibliotecas.eliminarPorNombre(bibliotecaActual.getNombre());
+                    LectorXML.creaBibliotecas(usuario.getCorreoElectronico(), listaBibliotecas);
+                    conversor(listaBibliotecas);
+                    bibliotecaActual = listaBibliotecas.getHead().getData();
+                    cargarTabla(bibliotecaActual);
+                    cargarLista();
+                }
+            }
+        });
+        JList_Bibliotecas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                bibliotecaActual = listaBibliotecas.buscarNombre(JList_Bibliotecas.getSelectedValue().toString());
                 cargarTabla(bibliotecaActual);
             }
         });
@@ -119,13 +134,22 @@ public class GUI_Bibliotecas extends JFrame{
     }//iniciarComponentes
 
     private void cargarLista(){
-        this.modeloJList.removeAllElements();
-        for (Object o : array) {
-            this.modeloJList.addElement(o.toString());
-        }
+        new Thread(){
+            public void run() {
+                modeloJList.removeAllElements();
+                for (Object o : array) {
+                    modeloJList.addElement(o.toString());
+                }
+            }
+        }.start();
+
     }
 
     private void cargarTabla(Biblioteca biblioteca){
+        entryNombrePlaylist.setText(biblioteca.getNombre());
+        entryCantidadPlaylist.setText(String.valueOf(biblioteca.getListaCanciones().getSize()));
+        entryFechaPlaylist.setText(biblioteca.getFecha());
+
         ListaCanciones listaCanciones = biblioteca.getListaCanciones();
         modeloJTable = new DefaultTableModel();
         modeloJTable.addColumn("Id");

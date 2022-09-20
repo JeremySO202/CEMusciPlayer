@@ -11,10 +11,10 @@ public class Biblioteca {
     private ListaCanciones listaCanciones;
     private String fecha;
 
-    public Biblioteca(String nombre, ListaCanciones listaCanciones) {
+    public Biblioteca(String nombre, ListaCanciones listaCanciones, String fecha) {
         this.nombre = nombre;
         this.listaCanciones = listaCanciones;
-        this.fecha = DateTimeFormatter.ofPattern("dd/MM/dd HH:mm").format(LocalDateTime.now());
+        this.fecha = fecha;
     }
 
     public String getNombre() {

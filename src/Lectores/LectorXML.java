@@ -126,10 +126,16 @@ public class LectorXML {
             String nombreplaylist = "Todas";
             do {
                 Element biblioteca = document.createElement("Biblioteca");
+
                 Element nombre = document.createElement("Nombre");
                 Text textNombre = document.createTextNode(nombreplaylist);
                 nombre.appendChild(textNombre);
                 biblioteca.appendChild(nombre);
+
+                Element fecha = document.createElement("Fecha");
+                Text textFecha = document.createTextNode(actualBiblioteca.getData().getFecha());
+                fecha.appendChild(textFecha);
+                biblioteca.appendChild(fecha);
 
                 Element canciones = document.createElement("Canciones");
 
@@ -196,6 +202,7 @@ public class LectorXML {
                 ListaCanciones listaCanciones = new ListaCanciones();
                 Node nodo = listaBiblioteca.item(i);
                 String nombreBiblioteca = "";
+                String fechaBiblioteca = "";
                 if (nodo.getNodeType() == Node.ELEMENT_NODE){
                     Element e = (Element) nodo;
                     NodeList biblioteca = e.getChildNodes();
@@ -205,6 +212,9 @@ public class LectorXML {
                             switch (dataBiblioteca.getNodeName()){
                                 case "Nombre":
                                     nombreBiblioteca = dataBiblioteca.getTextContent();
+                                    break;
+                                case "Fecha":
+                                    fechaBiblioteca = dataBiblioteca.getTextContent();
                                     break;
                                 case "Canciones":
                                     NodeList canciones = dataBiblioteca.getChildNodes();
@@ -227,7 +237,7 @@ public class LectorXML {
                             }
                         }
                     }
-                    listaBibliotecasFinal.insertarInicio(new Biblioteca(nombreBiblioteca,listaCanciones));
+                    listaBibliotecasFinal.insertarInicio(new Biblioteca(nombreBiblioteca,listaCanciones, fechaBiblioteca));
 
                 }
 

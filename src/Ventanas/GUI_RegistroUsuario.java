@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class GUI_RegistroUsuario extends JFrame {
 
@@ -167,7 +169,7 @@ public class GUI_RegistroUsuario extends JFrame {
         ListaCanciones listaCanciones = new ListaCanciones();
         listaCanciones = LectorXML.leerXMLCanciones();
         ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
-        listaBibliotecas.insertarInicio(new Biblioteca("Todas",listaCanciones));
+        listaBibliotecas.insertarInicio(new Biblioteca("Todas",listaCanciones, DateTimeFormatter.ofPattern("dd/MM/dd HH:mm").format(LocalDateTime.now())));
         LectorXML.creaBibliotecas(usuario.getCorreoElectronico(),listaBibliotecas);
 
         //        "Recursos/Bibliotecas/"+correo+".xml"

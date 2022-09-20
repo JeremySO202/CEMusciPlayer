@@ -6,12 +6,19 @@ import Reproductor.Reproductor;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import Reproductor.Comunicador;
 
 public class GUI_Reproductor extends JFrame{
+    private static Comunicador comunicador = new Comunicador();
+    private static boolean statusHilo;
+    private static Thread hilo;
     public JPanel panelReproductor;
     private ListaCanciones lista;
-    private Reproductor reproductor;
-    private JLabel nombreCancion;
+    private static Reproductor reproductor;
+    private static JLabel nombreCancion;
 
 
 
@@ -41,9 +48,63 @@ public class GUI_Reproductor extends JFrame{
         colocarPanel();
         colocarEtiquetas();
         colocarBotones();
-
+        conectarArduino();
 
     }//iniciarComponentes
+
+    private void conectarArduino(){
+        comunicador.conectar(comunicador.obtenerPuerto());
+        comunicador.iniciarIO();
+        comunicador.initListener();
+        if(comunicador.getConectado()){
+            iniciarHilo();
+            hilo.start();
+        }
+    }
+    private static void iniciarHilo(){
+        statusHilo=true;
+        hilo=new Thread(){
+            @Override
+            public void run() {
+                while(statusHilo){
+                    try {
+                        if (comunicador.isNuevoEvento()){
+                            switch (comunicador.getDato()){
+                                case "1":
+                                    System.out.println("Anterior");
+                                    reproductor.Anterior();
+                                    nombreCancion.setText(reproductor.getCancionActual());
+                                    comunicador.escribir(1);
+                                    break;
+                                case "2":
+                                    System.out.println("Reproducir");
+                                    reproductor.Reproducir();
+                                    nombreCancion.setText(reproductor.getCancionActual());
+                                    comunicador.escribir(2);
+                                    break;
+                                case "3":
+                                    System.out.println("Pausar");
+                                    reproductor.Pausar();
+                                    comunicador.escribir(3);
+                                    break;
+                                case "4":
+                                    System.out.println("Siguiente");
+                                    reproductor.Siguente();
+                                    nombreCancion.setText(reproductor.getCancionActual());
+                                    comunicador.escribir(4);
+                                    break;
+                            }
+                            comunicador.setNuevoEvento(false);
+                        }
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Comunicador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+        };
+    }
 
     /***
      * Este metodo crea el panel y lo pega en la ventana

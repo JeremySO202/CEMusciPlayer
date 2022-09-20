@@ -74,6 +74,20 @@ public class ListaBibliotecas {
         this.head = nueva.getHead();
     }
 
+    public void eliminarPorNombre(String eliminar){
+        ListaBibliotecas nueva = new ListaBibliotecas();
+        NodoBibliotecas temp = head;
+        while (temp!=null){
+            if (!temp.getData().getNombre().equals(eliminar)){
+                nueva.insertarInicio(temp.getData());
+            }else{
+                this.size--;
+            }
+            temp = temp.getNext();
+        }
+        this.head = nueva.getHead();
+    }
+
     public NodoBibliotecas getHead() {
         return head;
     }

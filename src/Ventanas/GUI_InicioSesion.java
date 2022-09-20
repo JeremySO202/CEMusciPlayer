@@ -90,12 +90,8 @@ public class GUI_InicioSesion extends JFrame {
                 List<Usuario> usuariosRegistrados = lectorcsv.extraerUsuarios();
 
                 for (int i = 0; i < usuariosRegistrados.size(); i++) {
-                    System.out.println(usuariosRegistrados.get(i).getCorreoElectronico()+"-"+usuariosRegistrados.get(i).getContrasena());
                     if (usuariosRegistrados.get(i).getCorreoElectronico().equals(usuarioField.getText()) && usuariosRegistrados.get(i).getContrasena().equals(contrasenaField.getText())) {
                         dispose();
-                        ListaCanciones lista = LectorXML.leerXMLCanciones();
-                        ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
-                        listaBibliotecas.insertarInicio(new Biblioteca("Playlist 1", lista));
                         GUI_Bibliotecas gui_bibliotecas = new GUI_Bibliotecas(usuariosRegistrados.get(i));
                         return;
                     }
