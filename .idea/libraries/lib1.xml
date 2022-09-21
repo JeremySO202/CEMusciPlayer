@@ -1,8 +1,7 @@
 <component name="libraryTable">
-  <library name="lib">
+  <library name="lib1">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../../javafx-sdk-18.0.2/lib" />
-      <root url="jar://$PROJECT_DIR$/../Prubas_Arduino/rxtx-2.1-7-bins-r2/rxtx-2.1-7-bins-r2/RXTXcomm.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

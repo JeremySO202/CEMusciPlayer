@@ -5,7 +5,11 @@ import Clases.Usuario;
 import Lectores.LectorXML;
 import Listas.Bibliotecas.ListaBibliotecas;
 import Listas.Canciones.ListaCanciones;
+import Lectores.LectorCSV;
+import Listas.Usuarios.ListaUsuarios;
+import Listas.Usuarios.NodoUsuarios;
 import com.csvreader.CsvWriter;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +23,13 @@ import java.time.format.DateTimeFormatter;
 
 public class GUI_RegistroUsuario extends JFrame {
 
+
+    ListaUsuarios usuariosRegistrados;
+    NodoUsuarios usuarioActual;
     public JPanel panelRegistroUsuario;
+    private ListaUsuarios usuariosLista;
     private Usuario usuario;
+    private LectorCSV lectorCSV;
 
     /***
      * Este es el constructor de la clase GUI_RegistroUsuario
@@ -31,6 +40,7 @@ public class GUI_RegistroUsuario extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("Registro");
+        this.lectorCSV = new LectorCSV("Usuarios.csv");
 
         iniciarComponentesRegistro();
     }//constructor
@@ -105,9 +115,33 @@ public class GUI_RegistroUsuario extends JFrame {
         ActionListener registroBtnListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Usuario usuario = new Usuario(nombreField.getText(),apellidoField.getText(),correoField.getText(), (String) listaProvincias.getSelectedItem(),contraseñaField.getText());
-                escribirCSV(usuario);
+
+                while (nombreField.getText().equals("") || apellidoField.getText().equals("") ||
+                        correoField.getText().equals("") || contraseñaField.getText().equals("") ||
+                        listaProvincias.getSelectedItem().equals("Provincia:")){
+                    JOptionPane.showMessageDialog(null,"Dejaste un espacio en blanco");
+                    return ;
+                }//while
+
+                //extraccion de usuarios csv
+
+                usuariosRegistrados = null;
+                usuariosRegistrados  = lectorCSV.extraerUsuarios();
+                usuarioActual = usuariosRegistrados.getHead();
+
+                for (int i = 0; i <usuariosRegistrados.getSize() ; i++) {
+                    if (usuarioActual.getData().getNombre().equals(nombreField.getText())){
+                        JOptionPane.showMessageDialog(null,"Este usuario ya está registrado");
+                        return ;
+                    }
+                    usuarioActual = usuarioActual.getNext();
                 }
+
+                escribirCSV(new Usuario(nombreField.getText(),apellidoField.getText(),correoField.getText(), (String) listaProvincias.getSelectedItem(),contraseñaField.getText()));
+                dispose();
+                GUI_InicioSesion gui_inicioSesion = new GUI_InicioSesion();
+                gui_inicioSesion.setVisible(true);
+            }
         };
         registroBtn.addActionListener(registroBtnListener);
 
@@ -117,7 +151,8 @@ public class GUI_RegistroUsuario extends JFrame {
      * Este metodo va a escribir en el CSV para almacenar datos de los Usuarios
      * Datos tales como: Nombre, Apellido, Correo, Provincia, Contraseña
      */
-    public void escribirCSV(Usuario usuario){
+    public void escribirCSV(Usuario user){
+        //NodoUsuarios nodoUsuarios = new NodoUsuarios();
         String salidaArchivo = "Usuarios.csv";
         boolean existe = new File(salidaArchivo).exists();
 
@@ -126,11 +161,14 @@ public class GUI_RegistroUsuario extends JFrame {
             try{
                 CsvWriter salidaCSV = new CsvWriter(new FileWriter(salidaArchivo, true), ',');
 
-                salidaCSV.write(usuario.getNombre() );
-                salidaCSV.write(usuario.getApellido() );
-                salidaCSV.write(usuario.getCorreoElectronico());
-                salidaCSV.write(usuario.getProvincia());
-                salidaCSV.write(usuario.getContrasena());
+                salidaCSV.write(user.getNombre());
+                salidaCSV.write(user.getApellido() );
+                salidaCSV.write(user.getCorreoElectronico());
+                salidaCSV.write(user.getProvincia());
+                salidaCSV.write(user.getContrasena());
+
+
+
                 salidaCSV.endRecord();
 
 
@@ -152,12 +190,15 @@ public class GUI_RegistroUsuario extends JFrame {
 
                 salidaCSV.endRecord();
 
-                salidaCSV.write(usuario.getNombre() );
-                salidaCSV.write(usuario.getApellido() );
-                salidaCSV.write(usuario.getCorreoElectronico());
-                salidaCSV.write(usuario.getProvincia());
-                salidaCSV.write(usuario.getContrasena());
+                salidaCSV.write(user.getNombre() );
+                salidaCSV.write(user.getApellido() );
+                salidaCSV.write(user.getCorreoElectronico());
+                salidaCSV.write(user.getProvincia());
+                salidaCSV.write(user.getContrasena());
+
+
                 salidaCSV.endRecord();
+
 
 
                 salidaCSV.close();
@@ -170,7 +211,7 @@ public class GUI_RegistroUsuario extends JFrame {
         listaCanciones = LectorXML.leerXMLCanciones();
         ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
         listaBibliotecas.insertarInicio(new Biblioteca("Todas",listaCanciones, DateTimeFormatter.ofPattern("dd/MM/dd HH:mm").format(LocalDateTime.now())));
-        LectorXML.creaBibliotecas(usuario.getCorreoElectronico(),listaBibliotecas);
+        LectorXML.creaBibliotecas(user.getCorreoElectronico(),listaBibliotecas);
 
         //        "Recursos/Bibliotecas/"+correo+".xml"
 

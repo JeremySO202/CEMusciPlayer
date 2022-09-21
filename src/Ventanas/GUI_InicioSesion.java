@@ -1,11 +1,14 @@
 package Ventanas;
 
 import Clases.Biblioteca;
+import Clases.Cancion;
 import Clases.Usuario;
 import Lectores.LectorCSV;
 import Lectores.LectorXML;
 import Listas.Bibliotecas.ListaBibliotecas;
 import Listas.Canciones.ListaCanciones;
+import Listas.Usuarios.ListaUsuarios;
+import Listas.Usuarios.NodoUsuarios;
 
 
 import javax.swing.*;
@@ -14,11 +17,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-
 public class GUI_InicioSesion extends JFrame {
+
+    ListaUsuarios usuariosRegistrados;
+    NodoUsuarios usuarioActual;
     public JPanel panelInicioSesion;
     public JTextField usuarioField;
-    public LectorCSV lectorcsv;
+    public LectorCSV lectorCSV;
 
     /***
      * Este es el contructor de la clase GUI_InicioSesio
@@ -28,7 +33,7 @@ public class GUI_InicioSesion extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("Registro");
-        this.lectorcsv = new LectorCSV();
+        this.lectorCSV = new LectorCSV("Usuarios.csv");
         iniciarComponentesInicioSesion();
     }//constructor
 
@@ -84,24 +89,36 @@ public class GUI_InicioSesion extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 while (usuarioField.getText().equals("") || contrasenaField.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Tienes que ingresar los datos completos");
+                    JOptionPane.showMessageDialog(null, "No ingresó algun dato");
                     return;
                 }
-                List<Usuario> usuariosRegistrados = lectorcsv.extraerUsuarios();
 
-                for (int i = 0; i < usuariosRegistrados.size(); i++) {
-                    if (usuariosRegistrados.get(i).getCorreoElectronico().equals(usuarioField.getText()) && usuariosRegistrados.get(i).getContrasena().equals(contrasenaField.getText())) {
+                usuariosRegistrados = null;
+                usuariosRegistrados = lectorCSV.extraerUsuarios();
+                usuarioActual = usuariosRegistrados.getHead();
+
+
+                for (int i = 0; i < usuariosRegistrados.getSize(); i++) {
+                    if (usuarioActual.getData().getNombre().equals(usuarioField.getText()) && usuarioActual.getData().getContrasena().equals(contrasenaField.getText())) {
                         dispose();
-                        GUI_Bibliotecas gui_bibliotecas = new GUI_Bibliotecas(usuariosRegistrados.get(i));
+                        dispose();
+                        GUI_Bibliotecas gui_bibliotecas = new GUI_Bibliotecas(usuariosRegistrados.getHead().getData());
                         return;
+                        //ListaCanciones lista = LectorXML.leerXML();
+                        //ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
+                        //listaBibliotecas.insertarInicio(new Biblioteca("Playlist 1", lista));
+                        //GUI_Bibliotecas gui_bibliotecas = new GUI_Bibliotecas(listaBibliotecas);
+
                     }
+                    usuarioActual = usuarioActual.getNext();
                 }//for
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
-                return;
+                JOptionPane.showMessageDialog(null, "Usuarios o contraseña incorrecta");
 
 
-            }//actionPerformed
+
+            }
         };
+
         inicioSesionBtn.addActionListener(inicioSesionBtnListener);
 
 
@@ -118,4 +135,4 @@ public class GUI_InicioSesion extends JFrame {
 
 
     }//iniciarComponentes
-}
+}//fin clase

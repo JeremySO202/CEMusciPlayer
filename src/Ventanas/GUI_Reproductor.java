@@ -4,8 +4,11 @@ import Listas.Canciones.ListaCanciones;
 import Reproductor.Reproductor;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,6 +22,8 @@ public class GUI_Reproductor extends JFrame{
     private ListaCanciones lista;
     private static Reproductor reproductor;
     private static JLabel nombreCancion;
+    private AdjustmentListener ajustador;
+    DefaultBoundedRangeModel model;
 
 
 
@@ -34,11 +39,8 @@ public class GUI_Reproductor extends JFrame{
         this.setLocationRelativeTo(null);
         this.setTitle("Reproductor");
 
-        //JButton pause = new JButton();
-        //pause.setText("Pause");
-        //pause.setBounds(100,100,100,40);
-        //pause.setEnabled(true);
         iniciarComponentes();
+
     }//GUI_Reproductor
 
     /***
@@ -145,15 +147,35 @@ public class GUI_Reproductor extends JFrame{
         anterior.setBounds(350,70,100,40);
         panelReproductor.add(anterior);
 
+        //BarraVolumen
+        Scrollbar barraVolumen = new Scrollbar();
+        barraVolumen.setOrientation(Adjustable.HORIZONTAL);
+        barraVolumen.setMinimum(0);
+        barraVolumen.setMaximum(100);
+        barraVolumen.setBlockIncrement(10);
+        barraVolumen.setBounds(450,70,100,40);
+        panelReproductor.add(barraVolumen);
+        ajustador = new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                if(e.getValue() > e.getValue()-1){
+                    reproductor.SubirVolumen();
+                }
+                reproductor.BajarVolumen();
+            }
+        };
+        barraVolumen.addAdjustmentListener(ajustador);
+
+
         //subirVolumen
-        JButton subirVolumen = new JButton("+");
-        subirVolumen.setBounds(450,70,45,40);
-        panelReproductor.add(subirVolumen);
+//        JButton subirVolumen = new JButton("+");
+//        subirVolumen.setBounds(450,70,45,40);
+//        panelReproductor.add(subirVolumen);
 
         //bajarVolumen
-        JButton bajarVolumen = new JButton("-");
-        bajarVolumen.setBounds(10,70,45,40);
-        panelReproductor.add(bajarVolumen);
+//        JButton bajarVolumen = new JButton("-");
+//        bajarVolumen.setBounds(10,70,45,40);
+//        panelReproductor.add(bajarVolumen);
 
 
         //Inicio ActionListeners
@@ -197,21 +219,21 @@ public class GUI_Reproductor extends JFrame{
         };
         anterior.addActionListener(anteriorListener);
 
-        ActionListener subirVolumenListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                reproductor.SubirVolumen();
-            }
-        };
-        subirVolumen.addActionListener(subirVolumenListener);
+//        ActionListener subirVolumenListener = new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                reproductor.SubirVolumen();
+//            }
+//        };
+//        subirVolumen.addActionListener(subirVolumenListener);
 
-        ActionListener bajarVolumenListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                reproductor.BajarVolumen();
-            }
-        };
-        bajarVolumen.addActionListener(bajarVolumenListener);
+//        ActionListener bajarVolumenListener = new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                reproductor.BajarVolumen();
+//            }
+//        };
+//        bajarVolumen.addActionListener(bajarVolumenListener);
 
         //fin actionlisteners
 
@@ -226,6 +248,8 @@ public class GUI_Reproductor extends JFrame{
 
         panelReproductor.add(nombreCancion);
     }//colocarVentanas
+
+
 
 
 }//fin clase GUI_Reproductor

@@ -1,24 +1,27 @@
 package Lectores;
 
 import Clases.Usuario;
+import Listas.Usuarios.ListaUsuarios;
+import Listas.Usuarios.NodoUsuarios;
 import com.csvreader.CsvReader;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LectorCSV {
 
     String archivoUsuarios;
 
-    public LectorCSV() {
+    NodoUsuarios usuarioActual;
+    ListaUsuarios listaUsuarios;
+
+
+    public LectorCSV(String archivoUsuarios) {
         this.archivoUsuarios = "Usuarios.csv";
+        this.listaUsuarios = new ListaUsuarios();
+    }//constructor
 
-    }//Contructor
-
-    public List<Usuario> extraerUsuarios(){
-        List<Usuario> usuarios = new ArrayList<Usuario>();
+    public ListaUsuarios extraerUsuarios(){
 
         try{
             CsvReader leerUsuarios = new CsvReader(this.archivoUsuarios);
@@ -26,25 +29,37 @@ public class LectorCSV {
 
             while(leerUsuarios.readRecord()){
                 String nombre = leerUsuarios.get(0);
-                String apellidos = leerUsuarios.get(1);
+
+                String apellido = leerUsuarios.get(1);
                 String correo = leerUsuarios.get(2);
                 String provincia = leerUsuarios.get(3);
-                String contrasena = leerUsuarios.get(4);
+                String contraseña = leerUsuarios.get(4);
 
+                this.listaUsuarios.insertarInicio( new Usuario(nombre, apellido, correo, provincia, contraseña));
 
-                usuarios.add(new Usuario(nombre,apellidos,correo,provincia,contrasena));
-                System.out.println(nombre+apellidos+correo+provincia+contrasena);
+                //usuarios.add(new Usuario(nombre, apellido, correo, provincia, contraseña));
 
 
             }//while
 
             leerUsuarios.close();
 
-        } catch(IOException e){
+
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }//try-catch
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(this.listaUsuarios.getSize());
 
-        return usuarios;
-    }//leectorCSV
+        return this.listaUsuarios;
+    }
+    public String getArchivoUsuarios() {
+        return archivoUsuarios;
+    }
 
-}//LectorCSV
+    public void setArchivoUsuarios(String archivoUsuarios) {
+        this.archivoUsuarios = archivoUsuarios;
+    }
+
+}//fin clase
