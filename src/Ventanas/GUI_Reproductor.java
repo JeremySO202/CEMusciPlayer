@@ -1,16 +1,30 @@
 package Ventanas;
 
-import Listas.ListaCanciones;
+import Listas.Canciones.ListaCanciones;
 import Reproductor.Reproductor;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import Reproductor.Comunicador;
 
 public class GUI_Reproductor extends JFrame{
+    private static Comunicador comunicador = new Comunicador();
+    private static boolean statusHilo;
+    private static Thread hilo;
     public JPanel panelReproductor;
     private ListaCanciones lista;
-    private Reproductor reproductor;
+    private static Reproductor reproductor;
+    private static JLabel nombreCancion;
+    private AdjustmentListener ajustador;
+    DefaultBoundedRangeModel model;
+
 
 
     /***
@@ -25,11 +39,8 @@ public class GUI_Reproductor extends JFrame{
         this.setLocationRelativeTo(null);
         this.setTitle("Reproductor");
 
-        JButton pause = new JButton();
-        pause.setText("Pause");
-        pause.setBounds(100,100,100,40);
-        pause.setEnabled(true);
         iniciarComponentes();
+
     }//GUI_Reproductor
 
     /***
@@ -39,9 +50,63 @@ public class GUI_Reproductor extends JFrame{
         colocarPanel();
         colocarEtiquetas();
         colocarBotones();
-
+        conectarArduino();
 
     }//iniciarComponentes
+
+    private void conectarArduino(){
+        comunicador.conectar(comunicador.obtenerPuerto());
+        comunicador.iniciarIO();
+        comunicador.initListener();
+        if(comunicador.getConectado()){
+            iniciarHilo();
+            hilo.start();
+        }
+    }
+    private static void iniciarHilo(){
+        statusHilo=true;
+        hilo=new Thread(){
+            @Override
+            public void run() {
+                while(statusHilo){
+                    try {
+                        if (comunicador.isNuevoEvento()){
+                            switch (comunicador.getDato()){
+                                case "1":
+                                    System.out.println("Anterior");
+                                    reproductor.Anterior();
+                                    nombreCancion.setText(reproductor.getCancionActual());
+                                    comunicador.escribir(1);
+                                    break;
+                                case "2":
+                                    System.out.println("Reproducir");
+                                    reproductor.Reproducir();
+                                    nombreCancion.setText(reproductor.getCancionActual());
+                                    comunicador.escribir(2);
+                                    break;
+                                case "3":
+                                    System.out.println("Pausar");
+                                    reproductor.Pausar();
+                                    comunicador.escribir(3);
+                                    break;
+                                case "4":
+                                    System.out.println("Siguiente");
+                                    reproductor.Siguente();
+                                    nombreCancion.setText(reproductor.getCancionActual());
+                                    comunicador.escribir(4);
+                                    break;
+                            }
+                            comunicador.setNuevoEvento(false);
+                        }
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Comunicador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+        };
+    }
 
     /***
      * Este metodo crea el panel y lo pega en la ventana
@@ -52,6 +117,10 @@ public class GUI_Reproductor extends JFrame{
         this.getContentPane().add(panelReproductor);
 
     }//colocarPanel
+
+    private void colocarCanciones(ListaCanciones lista){
+        
+    }
 
     /***
      * Este metodo crea y pega los botones en el panel
@@ -78,22 +147,41 @@ public class GUI_Reproductor extends JFrame{
         anterior.setBounds(350,70,100,40);
         panelReproductor.add(anterior);
 
+        //BarraVolumen
+        Scrollbar barraVolumen = new Scrollbar();
+        barraVolumen.setOrientation(Adjustable.HORIZONTAL);
+        barraVolumen.setMinimum(0);
+        barraVolumen.setMaximum(100);
+        barraVolumen.setBlockIncrement(10);
+        barraVolumen.setBounds(450,70,100,40);
+        panelReproductor.add(barraVolumen);
+        ajustador = new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                if(e.getValue() > e.getValue()-1){
+                    reproductor.SubirVolumen();
+                }
+                reproductor.BajarVolumen();
+            }
+        };
+        barraVolumen.addAdjustmentListener(ajustador);
+
+
         //subirVolumen
-        JButton subirVolumen = new JButton("+");
-        subirVolumen.setBounds(450,70,45,40);
-        panelReproductor.add(subirVolumen);
+//        JButton subirVolumen = new JButton("+");
+//        subirVolumen.setBounds(450,70,45,40);
+//        panelReproductor.add(subirVolumen);
 
         //bajarVolumen
-        JButton bajarVolumen = new JButton("-");
-        bajarVolumen.setBounds(10,70,45,40);
-        panelReproductor.add(bajarVolumen);
+//        JButton bajarVolumen = new JButton("-");
+//        bajarVolumen.setBounds(10,70,45,40);
+//        panelReproductor.add(bajarVolumen);
 
 
         //Inicio ActionListeners
         ActionListener pauseBListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 reproductor.Pausar();
             }
         };
@@ -104,6 +192,8 @@ public class GUI_Reproductor extends JFrame{
             public void actionPerformed(ActionEvent e) {
 
                 reproductor.Reproducir();
+                nombreCancion.setText(reproductor.getCancionActual());
+
             }
         };
         reproducir.addActionListener(reproducirListener);
@@ -111,33 +201,39 @@ public class GUI_Reproductor extends JFrame{
         ActionListener siguienteListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 reproductor.Siguente();
+                nombreCancion.setText(reproductor.getCancionActual());
+
             }
         };
         siguiente.addActionListener(siguienteListener);
         ActionListener anteriorListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 reproductor.Anterior();
+                nombreCancion.setText(reproductor.getCancionActual());
+
             }
         };
         anterior.addActionListener(anteriorListener);
 
-        ActionListener subirVolumenListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                reproductor.SubirVolumen();
-            }
-        };
-        subirVolumen.addActionListener(subirVolumenListener);
+//        ActionListener subirVolumenListener = new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                reproductor.SubirVolumen();
+//            }
+//        };
+//        subirVolumen.addActionListener(subirVolumenListener);
 
-        ActionListener bajarVolumenListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                reproductor.BajarVolumen();
-            }
-        };
-        bajarVolumen.addActionListener(bajarVolumenListener);
+//        ActionListener bajarVolumenListener = new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                reproductor.BajarVolumen();
+//            }
+//        };
+//        bajarVolumen.addActionListener(bajarVolumenListener);
 
         //fin actionlisteners
 
@@ -147,11 +243,13 @@ public class GUI_Reproductor extends JFrame{
      * Este metodo crea y pega las etiquetas
      */
     private void colocarEtiquetas(){
-        JLabel nombreCancion = new JLabel(reproductor.getCancionActual());
-        nombreCancion.setBounds(230,5,100,40);
+        nombreCancion = new JLabel(reproductor.getCancionActual());
+        nombreCancion.setBounds(180,5,200,40);
 
         panelReproductor.add(nombreCancion);
     }//colocarVentanas
+
+
 
 
 }//fin clase GUI_Reproductor

@@ -1,4 +1,4 @@
-package Listas;
+package Listas.Canciones;
 
 import Clases.Cancion;
 
@@ -25,10 +25,7 @@ public class ListaCanciones {
      * @return retorna true en caso de que este vacia y false en caso contrario
      */
     public boolean vacia(){
-        if (this.head == null){
-            return true;
-        }
-        return false;
+        return this.head == null;
     }
 
     /***
@@ -55,6 +52,55 @@ public class ListaCanciones {
 
     }
 
+    public Cancion buscarId(String id){
+        NodoCanciones inicio = this.head;
+        NodoCanciones actual = this.head;
+
+        do {
+            if (actual.getData().getId().equals(id)){
+                return actual.getData();
+            }
+            actual = actual.getNext();
+        }while (inicio!=actual);
+        return null;
+    }
+
+    public void modificarPorId(String id, Cancion modificada){
+        NodoCanciones inicio = this.head;
+        NodoCanciones actual = this.head;
+
+        do {
+            if (actual.getData().getId().equals(id)){
+                actual.setData(modificada);
+            }
+            actual = actual.getNext();
+        }while (inicio!=actual);
+
+    }
+    public void eliminarPorId(String id){
+        NodoCanciones inicio = this.head;
+        NodoCanciones actual = this.head;
+        NodoCanciones previo = this.head.getPrev();
+
+        do {
+            if (actual.getData().getId().equals(id)){
+                boolean bandera = false;
+                if (inicio==actual){
+                    bandera = true;
+                }
+                previo.setNext(previo.getNext().getNext());
+                actual = actual.getNext();
+                actual.setPrev(previo);
+                if (bandera){
+                    inicio=actual;
+                }
+
+            }
+            actual = actual.getNext();
+            previo = actual.getPrev();
+        }while (inicio!=actual);
+
+    }
     public NodoCanciones getHead() {
         return head;
     }

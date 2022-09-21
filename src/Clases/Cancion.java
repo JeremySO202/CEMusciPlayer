@@ -5,6 +5,7 @@ package Clases;
  */
 public class Cancion {
     //TODO agregar XML???
+    private String id;
     private String nombre;
     private String direccion;
 
@@ -13,10 +14,18 @@ public class Cancion {
      * @param nombre nombre de la cancion
      * @param direccion path de donde se ubica la cancion
      */
-    public Cancion(String nombre, String direccion) {
-
+    public Cancion(String id,String nombre, String direccion) {
+        this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     /***

@@ -4,31 +4,44 @@ package Clases;
  * Clase donde le almacenara los usuarios
  */
 public class Usuario {
-    private String nombreCompleto;
+    private String nombre;
+    private String apellido;
     private String correoElectronico;
     private String provincia;
-    private String contraseña;
+    private String contrasena;
+
+
 
     /***
-     *Constructor de la clase Usuario
-     * @param nombreCompleto nombre del usuario a registrar
+     * Constructor de la clase Usuario
+     * @param nombre nombre del usuario a registrar
+     * @param apellido apellido de la persona a regitrar
      * @param correoElectronico correo de la persona a regitrar
      * @param provincia provincia en la que vive el usuario
-     * @param contraseña constraseña que registra el usuario
+     * @param contrasena contrasena constraseña que registra el usuario
      */
-    public Usuario(String nombreCompleto, String correoElectronico, String provincia, String contraseña) {
-        this.nombreCompleto = nombreCompleto;
+    public Usuario(String nombre, String apellido, String correoElectronico, String provincia, String contrasena) {
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.correoElectronico = correoElectronico;
         this.provincia = provincia;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
+    }//constructor
+
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCorreoElectronico() {
@@ -47,11 +60,11 @@ public class Usuario {
         this.provincia = provincia;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 }//fin clase usuario

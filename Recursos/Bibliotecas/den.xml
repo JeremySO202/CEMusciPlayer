@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Bibliotecas>
+    <Biblioteca>
+        <Nombre>Todas</Nombre>
+        <Fecha>17/09/2022</Fecha>
+        <Canciones>
+            <Cancion>
+                <Id>3</Id>
+            </Cancion>
+            <Cancion>
+                <Id>1</Id>
+            </Cancion>
+        </Canciones>
+    </Biblioteca>
+</Bibliotecas>
