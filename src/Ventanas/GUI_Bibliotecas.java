@@ -12,6 +12,8 @@ import Listas.Canciones.NodoCanciones;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class GUI_Bibliotecas extends JFrame{
@@ -34,6 +36,14 @@ public class GUI_Bibliotecas extends JFrame{
     private JTextField entryNombrePlaylist;
     private JTextField entryFechaPlaylist;
     private JTextField entryCantidadPlaylist;
+    private JButton agregarPlaylistButton;
+    private JButton agregarAPlaylistButton;
+    private JButton favoritaButton;
+    private JTextField textFieldGenero;
+    private JTextField textFieldArtista;
+    private JTextField textFieldAlbum;
+    private JTextField textFieldAno;
+    private JTextField textFieldLetra;
     private Biblioteca bibliotecaActual;
     private JFrame frame;
     private Cancion cancionSeleccionada;
@@ -48,7 +58,7 @@ public class GUI_Bibliotecas extends JFrame{
         btnReproductor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GUI_Reproductor gui_reproductor = new GUI_Reproductor(bibliotecaActual.getListaCanciones());
+                GUI_Reproductor gui_reproductor = new GUI_Reproductor(usuario,listaBibliotecas, bibliotecaActual, bibliotecaActual.getListaCanciones());
                 gui_reproductor.setVisible(true);
                 frame.setVisible(false);
 
@@ -62,6 +72,11 @@ public class GUI_Bibliotecas extends JFrame{
                     String id = String.valueOf(JTable_Canciones.getValueAt(index, 0));
                     cancionSeleccionada = listaCancionesTodas.buscarId(id);
                     textFieldNombre.setText(cancionSeleccionada.getNombre());
+                    textFieldGenero.setText(cancionSeleccionada.getGenero());
+                    textFieldArtista.setText(cancionSeleccionada.getArtista());
+                    textFieldAlbum.setText(cancionSeleccionada.getAlbum());
+                    textFieldAno.setText(cancionSeleccionada.getAno());
+                    textFieldLetra.setText(cancionSeleccionada.getLetra());
                 } catch (Exception ex){
                     System.out.println(ex.getMessage());
                 }
@@ -70,14 +85,13 @@ public class GUI_Bibliotecas extends JFrame{
         editarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                listaCancionesTodas.modificarPorId(cancionSeleccionada.getId(),new Cancion(cancionSeleccionada.getId(), textFieldNombre.getText(), cancionSeleccionada.getDireccion()));
+                listaCancionesTodas.modificarPorId(cancionSeleccionada.getId(),new Cancion(cancionSeleccionada.getId(), textFieldNombre.getText(), cancionSeleccionada.getDireccion(),textFieldGenero.getText(),textFieldArtista.getText(),textFieldAlbum.getText(),textFieldAno.getText(),textFieldLetra.getText()));
                 LectorXML.creaCanciones(listaCancionesTodas);
                 listaBibliotecas = LectorXML.leerXMLBibliotecas(usuario.getCorreoElectronico());
                 bibliotecaActual = listaBibliotecas.buscarNombre(bibliotecaActual.getNombre());
                 conversor(listaBibliotecas);
                 cargarLista();
                 cargarTabla(bibliotecaActual);
-
             }
         });
         eliminarButton.addActionListener(new ActionListener() {
@@ -94,7 +108,7 @@ public class GUI_Bibliotecas extends JFrame{
         eliminarBibliotecaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!bibliotecaActual.getNombre().equals("Todas")){
+                if(!bibliotecaActual.getNombre().equals("Todas")&&!bibliotecaActual.getNombre().equals("Favoritas")){
                     listaBibliotecas.eliminarPorNombre(bibliotecaActual.getNombre());
                     LectorXML.creaBibliotecas(usuario.getCorreoElectronico(), listaBibliotecas);
                     conversor(listaBibliotecas);
@@ -108,6 +122,56 @@ public class GUI_Bibliotecas extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 bibliotecaActual = listaBibliotecas.buscarNombre(JList_Bibliotecas.getSelectedValue().toString());
+                cargarTabla(bibliotecaActual);
+            }
+        });
+        agregarPlaylistButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombrePlaylist =JOptionPane.showInputDialog(frame,"Digite el nombre de la playlist","Nueva Playlist",JOptionPane.QUESTION_MESSAGE);
+                listaBibliotecas.insertarInicio(new Biblioteca(nombrePlaylist,new ListaCanciones(), DateTimeFormatter.ofPattern("dd/MM/dd HH:mm").format(LocalDateTime.now())));
+                LectorXML.creaBibliotecas(usuario.getCorreoElectronico(), listaBibliotecas);
+                conversor(listaBibliotecas);
+                bibliotecaActual = listaBibliotecas.getHead().getData();
+                cargarTabla(bibliotecaActual);
+                cargarLista();
+
+            }
+        });
+        agregarAPlaylistButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> opciones = new ArrayList<String>();
+                NodoBibliotecas temp = listaBibliotecas.getHead();
+                while (temp!=null){
+                    if (!temp.getData().getNombre().equals("Todas")&&!temp.getData().getNombre().equals("Favoritas")){
+                        opciones.add(temp.getData().getNombre());
+                    }
+                    temp=temp.getNext();
+                }
+                Object[] options;
+                options = (Object[]) opciones.toArray();
+                String playlist = JOptionPane.showInputDialog(frame,"Seleccione la playlist","Agregar Cancion",JOptionPane.PLAIN_MESSAGE,null,options,options[0]).toString();
+
+                Biblioteca bibliotecaAgregar = listaBibliotecas.buscarNombre(playlist);
+                ListaCanciones nuevaLista = bibliotecaAgregar.getListaCanciones();
+                nuevaLista.insertarInicio(cancionSeleccionada);
+                bibliotecaAgregar.setListaCanciones(nuevaLista);
+                listaBibliotecas.modificarPorNombre(bibliotecaAgregar);
+                LectorXML.creaBibliotecas(usuario.getCorreoElectronico(), listaBibliotecas);
+                cargarTabla(bibliotecaActual);
+
+            }
+        });
+        favoritaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Biblioteca bibliotecaAgregar = listaBibliotecas.buscarNombre("Favoritas");
+                ListaCanciones nuevaLista = bibliotecaAgregar.getListaCanciones();
+                nuevaLista.insertarInicio(cancionSeleccionada);
+                bibliotecaAgregar.setListaCanciones(nuevaLista);
+                listaBibliotecas.modificarPorNombre(bibliotecaAgregar);
+                LectorXML.creaBibliotecas(usuario.getCorreoElectronico(), listaBibliotecas);
                 cargarTabla(bibliotecaActual);
             }
         });
@@ -154,15 +218,20 @@ public class GUI_Bibliotecas extends JFrame{
         modeloJTable = new DefaultTableModel();
         modeloJTable.addColumn("Id");
         modeloJTable.addColumn("Nombre");
+        modeloJTable.addColumn("Artista");
+        modeloJTable.addColumn("Album");
 
         if (!listaCanciones.vacia()){
             NodoCanciones inicio = listaCanciones.getHead();
             NodoCanciones temp = listaCanciones.getHead();
             do {
                 System.out.println(temp.getData().getNombre());
-                modeloJTable.addRow(new Object[]{temp.getData().getId(),temp.getData().getNombre()});
+                modeloJTable.addRow(new Object[]{temp.getData().getId(),temp.getData().getNombre(),temp.getData().getArtista(),temp.getData().getAlbum()});
                 temp = temp.getNext();
             }while (temp!=inicio);
+            JTable_Canciones.setModel(modeloJTable);
+        }
+        else {
             JTable_Canciones.setModel(modeloJTable);
         }
 

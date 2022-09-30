@@ -1,5 +1,6 @@
 package Reproductor;
 
+import Clases.Cancion;
 import Listas.Canciones.ListaCanciones;
 import Listas.Canciones.NodoCanciones;
 import javafx.embed.swing.JFXPanel;
@@ -16,6 +17,7 @@ public class Reproductor {
     private MediaPlayer reproductor;
     private ListaCanciones lista;
     private NodoCanciones cancionActual;
+    private boolean repContinua;
 
     /***
      * Metodo constructor de Reproductor
@@ -25,6 +27,7 @@ public class Reproductor {
         this.lista = lista;
         this.cancionActual = lista.getHead();
         NuevaCancion(this.cancionActual.getData().getDireccion());
+        repContinua = false;
     }
 
     /***
@@ -39,6 +42,12 @@ public class Reproductor {
         Media audio = new Media(archivo.toURI().toString());
 
         this.reproductor = new MediaPlayer(audio);
+        this.reproductor.setOnEndOfMedia(()->{
+            if (cancionActual.getNext()!=lista.getHead() || isRepContinua()){
+                Siguente();
+            }
+
+        });
         Reproducir();
     }
 
@@ -79,13 +88,9 @@ public class Reproductor {
         NuevaCancion(this.cancionActual.getData().getDireccion());
 
     }
-    public void SubirVolumen(){
-        double volumen = reproductor.getVolume()*100;
-        if (volumen < 100){
-            volumen= volumen + 20;
-            reproductor.setVolume(volumen/100);
-        }
-        System.out.println(volumen);
+    public double ajustarVolumen(double volumen){
+        reproductor.setVolume(volumen/100);
+        return reproductor.getVolume();
 
     }
     public void BajarVolumen(){
@@ -103,4 +108,19 @@ public class Reproductor {
      * @return string del nombre de la cancion
      */
     public String getCancionActual(){return cancionActual.getData().getNombre();};
+
+    public Cancion getCancion(){
+        return cancionActual.getData();
+    }
+    public boolean isRepContinua() {
+        return repContinua;
+    }
+
+    public void setRepContinua() {
+        if (isRepContinua()){
+            repContinua = false;
+        }else {
+            repContinua = true;
+        }
+    }
 }

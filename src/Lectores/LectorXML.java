@@ -51,6 +51,31 @@ public class LectorXML {
                 direccionCancion.appendChild(textDireccionCancion);
                 cancion.appendChild(direccionCancion);
 
+                Element generoCancion = document.createElement("Genero");
+                Text textGeneroCancion = document.createTextNode(actual.getData().getGenero());
+                generoCancion.appendChild(textGeneroCancion);
+                cancion.appendChild(generoCancion);
+
+                Element artistaCancion = document.createElement("Artista");
+                Text textArtistaCancion = document.createTextNode(actual.getData().getArtista());
+                artistaCancion.appendChild(textArtistaCancion);
+                cancion.appendChild(artistaCancion);
+
+                Element albumCancion = document.createElement("Album");
+                Text textAlbumCancion = document.createTextNode(actual.getData().getAlbum());
+                albumCancion.appendChild(textAlbumCancion);
+                cancion.appendChild(albumCancion);
+
+                Element anoCancion = document.createElement("Ano");
+                Text textAnoCancion = document.createTextNode(actual.getData().getAno());
+                anoCancion.appendChild(textAnoCancion);
+                cancion.appendChild(anoCancion);
+
+                Element letraCancion = document.createElement("Letra");
+                Text textLetraCancion = document.createTextNode(actual.getData().getLetra());
+                letraCancion.appendChild(textLetraCancion);
+                cancion.appendChild(letraCancion);
+
                 document.getDocumentElement().appendChild(cancion);
 
                 actual = actual.getNext();
@@ -88,6 +113,11 @@ public class LectorXML {
                     String id = "";
                     String nombre = "";
                     String direccion = "";
+                    String genero = "";
+                    String artista = "";
+                    String album = "";
+                    String ano = "";
+                    String letra = "";
                     for (int j = 0; j < hijos.getLength(); j++) {
                         Node hijo = hijos.item(j);
                         if (hijo.getNodeType() == Node.ELEMENT_NODE) {
@@ -101,10 +131,25 @@ public class LectorXML {
                                 case "Direccion":
                                     direccion = hijo.getTextContent();
                                     break;
+                                case "Genero":
+                                    genero = hijo.getTextContent();
+                                    break;
+                                case "Artista":
+                                    artista = hijo.getTextContent();
+                                    break;
+                                case "Album":
+                                    album = hijo.getTextContent();
+                                    break;
+                                case "Ano":
+                                    ano = hijo.getTextContent();
+                                    break;
+                                case "Letra":
+                                    letra = hijo.getTextContent();
+                                    break;
                             }
                         }
                     }
-                    lista.insertarInicio(new Cancion(id, nombre, direccion));
+                    lista.insertarInicio(new Cancion(id, nombre, direccion,genero,artista,album,ano,letra));
                 }
             }
 
@@ -123,8 +168,12 @@ public class LectorXML {
 
             Document document = implementation.createDocument(null, "Bibliotecas", null);
             document.setXmlVersion("1.0");
-            String nombreplaylist = "Todas";
+            String nombreplaylist = "";
             do {
+                if (actualBiblioteca!=null){
+
+                    nombreplaylist = actualBiblioteca.getData().getNombre();
+                }
                 Element biblioteca = document.createElement("Biblioteca");
 
                 Element nombre = document.createElement("Nombre");
@@ -145,18 +194,20 @@ public class LectorXML {
                 NodoCanciones cancionPrimera = listaCanciones.getHead();
                 NodoCanciones actual = cancionPrimera;
 
-                do {
-                    Element cancion = document.createElement("Cancion");
+                if (actual!=null){
+                    do {
+                        Element cancion = document.createElement("Cancion");
 
-                    Element idCancion = document.createElement("Id");
-                    Text textIdCancion = document.createTextNode(actual.getData().getId());
-                    idCancion.appendChild(textIdCancion);
-                    cancion.appendChild(idCancion);
+                        Element idCancion = document.createElement("Id");
+                        Text textIdCancion = document.createTextNode(actual.getData().getId());
+                        idCancion.appendChild(textIdCancion);
+                        cancion.appendChild(idCancion);
 
-                    canciones.appendChild(cancion);
+                        canciones.appendChild(cancion);
 
-                    actual = actual.getNext();
-                } while (cancionPrimera != actual);
+                        actual = actual.getNext();
+                    } while (cancionPrimera != actual);
+                }
 
 
                 //fin ciclo
@@ -173,9 +224,7 @@ public class LectorXML {
                 transformer.transform(source, result);
 
                 actualBiblioteca = actualBiblioteca.getNext();
-                if (actualBiblioteca!=null){
-                    nombreplaylist = actualBiblioteca.getData().getNombre();
-                }
+
             }while (actualBiblioteca!=null);
 
         } catch (ParserConfigurationException | TransformerException e) {

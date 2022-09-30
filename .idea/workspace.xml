@@ -2,19 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54997256-fe4f-4bf5-96cb-1f9b06465de7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Documents.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/RXTXcomm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javacsv1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recursos/Bibliotecas/123.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Listas/Usuarios/ListaUsuarios.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Listas/Usuarios/NodoUsuarios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javacsv.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/RXTXcomm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/RXTXcomm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javacsv1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/javacsv1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEMusciPlayer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CEMusciPlayer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Canciones.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Canciones.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Canciones2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recursos/Bibliotecas/123.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recursos/Bibliotecas/den.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recursos/Bibliotecas/ewq.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recursos/Bibliotecas/jerem.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recursos/Bibliotecas/juan.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Usuarios.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Usuarios.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lectores/LectorCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lectores/LectorCSV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Cancion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Cancion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lectores/LectorXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lectores/LectorXML.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Listas/Canciones/ListaCanciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Listas/Canciones/ListaCanciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reproductor/Comunicador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reproductor/Comunicador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reproductor/Reproductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reproductor/Reproductor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Bibliotecas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_InicioSesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_InicioSesion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_RegistroUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_RegistroUsuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ventanas/GUI_Reproductor.java" afterDir="false" />
@@ -39,6 +45,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2EpENCuwVL270YIzMmDXLwQKMtM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -53,14 +62,16 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "false",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "201",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "C:/Users/Usuario/Documents/rxtxSerial.dll",
+    "last_opened_file_path": "D:/jar's/rxtx-2.1-7-bins-r2/rxtx-2.1-7-bins-r2/RXTXcomm.jar",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.22207446",
-    "project.structure.side.proportion": "0.30407524"
+    "project.structure.side.proportion": "0.30407524",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -111,6 +122,12 @@
       <workItem from="1663618127323" duration="768000" />
       <workItem from="1663619624619" duration="6000" />
       <workItem from="1663626688741" duration="3061000" />
+      <workItem from="1663863278402" duration="11832000" />
+      <workItem from="1664329302814" duration="656000" />
+      <workItem from="1664471562017" duration="749000" />
+      <workItem from="1664472378055" duration="126000" />
+      <workItem from="1664481801005" duration="1282000" />
+      <workItem from="1664509789361" duration="7248000" />
     </task>
     <servers />
   </component>
@@ -137,5 +154,10 @@
         <PinnedItemInfo parentTag="Listas.ListaCanciones" memberName="head" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this.head.next.data" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

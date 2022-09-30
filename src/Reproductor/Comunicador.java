@@ -16,8 +16,9 @@ public class Comunicador implements SerialPortEventListener{
     SerialPort serialPort=null;
 
     boolean conectado=false;
-    public String dato ="";
+    public String[] dato = null;
     private boolean nuevoEvento = false;
+    private String texto = "";
 
     public void initListener(){
         try{
@@ -29,7 +30,7 @@ public class Comunicador implements SerialPortEventListener{
         }
 
     }
-    public String getDato(){
+    public String[] getDato(){
         return dato;
     }
 
@@ -38,9 +39,16 @@ public class Comunicador implements SerialPortEventListener{
             try{
                 byte datoSimple=(byte) input.read();
                 if(datoSimple != 10 && datoSimple != 13){
-                    String texto = new String(new byte[]{datoSimple} );
-                    this.dato = texto;
-                    nuevoEvento = true;
+
+                    texto += new String(new byte[]{datoSimple} );
+                }
+                else {
+                    if (!texto.equals("")){
+                        dato = texto.split(",");
+                        nuevoEvento = true;
+                        texto = "";
+                        System.out.println(dato);
+                    }
                 }
             }catch(Exception e){
                 System.out.println("ERROR lectura: "+e.getMessage());
