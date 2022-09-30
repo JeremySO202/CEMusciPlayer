@@ -88,7 +88,7 @@ public class GUI_InicioSesion extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                while (usuarioField.getText().equals("") || contrasenaField.getText().equals("")) {
+                if (usuarioField.getText().equals("") || contrasenaField.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "No ingresó algun dato");
                     return;
                 }
@@ -99,16 +99,11 @@ public class GUI_InicioSesion extends JFrame {
 
 
                 for (int i = 0; i < usuariosRegistrados.getSize(); i++) {
-                    if (usuarioActual.getData().getNombre().equals(usuarioField.getText()) && usuarioActual.getData().getContrasena().equals(contrasenaField.getText())) {
+                    if (usuarioActual.getData().getCorreoElectronico().equals(usuarioField.getText()) && usuarioActual.getData().getContrasena().equals(contrasenaField.getText())) {
                         dispose();
                         dispose();
                         GUI_Bibliotecas gui_bibliotecas = new GUI_Bibliotecas(usuariosRegistrados.getHead().getData());
                         return;
-                        //ListaCanciones lista = LectorXML.leerXML();
-                        //ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
-                        //listaBibliotecas.insertarInicio(new Biblioteca("Playlist 1", lista));
-                        //GUI_Bibliotecas gui_bibliotecas = new GUI_Bibliotecas(listaBibliotecas);
-
                     }
                     usuarioActual = usuarioActual.getNext();
                 }//for

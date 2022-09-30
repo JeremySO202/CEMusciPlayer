@@ -1,11 +1,2 @@
 Nombre,Apellidos,Correo,Provincia,Contraseña
-Sebastian,Naranjo,naranjomoras@gmail.com,Cartago,naranjosebas13
-Jeremy,Serracin,serracinJere@gmail.com,San Jose,serracinjeremy
-ewq,ewq,ewq,San Jose,ewq
-Jeremy,Serracin,jerem,San Jose,1234
-Denis,Gringo,den,San Jose,1234
-juan,perez,juan,San Jose,1234
-123,123,123,San Jose,123
-123,123,123,San Jose,123
-123,123,123,San Jose,123
-123,123,123,San Jose,123
+User,Admin,root,San Jose,root

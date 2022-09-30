@@ -8,16 +8,21 @@ public class Cancion {
     private String id;
     private String nombre;
     private String direccion;
+    private String genero;
+    private String artista;
+    private String album;
+    private String ano;
+    private String letra;
 
-    /***
-     * Constructor de la clase Cancion
-     * @param nombre nombre de la cancion
-     * @param direccion path de donde se ubica la cancion
-     */
-    public Cancion(String id,String nombre, String direccion) {
+    public Cancion(String id, String nombre, String direccion, String genero, String artista, String album, String ano, String letra) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
+        this.genero = genero;
+        this.artista = artista;
+        this.album = album;
+        this.ano = ano;
+        this.letra = letra;
     }
 
     public String getId() {
@@ -56,5 +61,45 @@ public class Cancion {
      */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getArtista() {
+        return artista;
+    }
+
+    public void setArtista(String artista) {
+        this.artista = artista;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public String getLetra() {
+        return letra;
+    }
+
+    public void setLetra(String letra) {
+        this.letra = letra;
     }
 }

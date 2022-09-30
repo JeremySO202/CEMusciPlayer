@@ -1,5 +1,9 @@
 package Ventanas;
 
+import Clases.Biblioteca;
+import Clases.Usuario;
+import Lectores.LectorXML;
+import Listas.Bibliotecas.ListaBibliotecas;
 import Listas.Canciones.ListaCanciones;
 import Reproductor.Reproductor;
 
@@ -24,6 +28,12 @@ public class GUI_Reproductor extends JFrame{
     private static JLabel nombreCancion;
     private AdjustmentListener ajustador;
     DefaultBoundedRangeModel model;
+    private static Scrollbar barraVolumen;
+    private Usuario usuario;
+    private ListaBibliotecas listaBibliotecas;
+    private Biblioteca bibliotecaActual;
+
+
 
 
 
@@ -31,10 +41,13 @@ public class GUI_Reproductor extends JFrame{
      * Este metodo genera la ventana para cargar componentes
      * @param lista Lista de canciones inicial
      */
-    public GUI_Reproductor(ListaCanciones lista){
+    public GUI_Reproductor(Usuario usuario, ListaBibliotecas listaBibliotecas, Biblioteca biblioteca, ListaCanciones lista){
         this.lista = lista;
+        this.usuario = usuario;
+        this.listaBibliotecas = listaBibliotecas;
+        this.bibliotecaActual = biblioteca;
         this.reproductor = new Reproductor(this.lista);
-        this.setSize(530,200);
+        this.setSize(700,200);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("Reproductor");
@@ -71,34 +84,43 @@ public class GUI_Reproductor extends JFrame{
                 while(statusHilo){
                     try {
                         if (comunicador.isNuevoEvento()){
-                            switch (comunicador.getDato()){
-                                case "1":
-                                    System.out.println("Anterior");
-                                    reproductor.Anterior();
-                                    nombreCancion.setText(reproductor.getCancionActual());
-                                    comunicador.escribir(1);
-                                    break;
-                                case "2":
-                                    System.out.println("Reproducir");
-                                    reproductor.Reproducir();
-                                    nombreCancion.setText(reproductor.getCancionActual());
-                                    comunicador.escribir(2);
-                                    break;
-                                case "3":
-                                    System.out.println("Pausar");
-                                    reproductor.Pausar();
-                                    comunicador.escribir(3);
-                                    break;
-                                case "4":
-                                    System.out.println("Siguiente");
-                                    reproductor.Siguente();
-                                    nombreCancion.setText(reproductor.getCancionActual());
-                                    comunicador.escribir(4);
-                                    break;
+                            String[] dato = comunicador.getDato();
+                            if (dato!=null&&dato.length==2){
+                                System.out.println(dato[1]);
+                                double volumen = Double.parseDouble(dato[0]);
+                                volumen = volumen/1023*100;
+                                System.out.println(volumen);
+                                reproductor.ajustarVolumen(volumen);
+                                barraVolumen.setValue((int) volumen);
+                                switch (dato[1]){
+                                    case "1":
+                                        System.out.println("Anterior");
+                                        reproductor.Anterior();
+                                        nombreCancion.setText(reproductor.getCancionActual());
+                                        comunicador.escribir(1);
+                                        break;
+                                    case "2":
+                                        System.out.println("Reproducir");
+                                        reproductor.Reproducir();
+                                        nombreCancion.setText(reproductor.getCancionActual());
+                                        comunicador.escribir(2);
+                                        break;
+                                    case "3":
+                                        System.out.println("Pausar");
+                                        reproductor.Pausar();
+                                        comunicador.escribir(3);
+                                        break;
+                                    case "4":
+                                        System.out.println("Siguiente");
+                                        reproductor.Siguente();
+                                        nombreCancion.setText(reproductor.getCancionActual());
+                                        comunicador.escribir(4);
+                                        break;
+                                }
+                                comunicador.setNuevoEvento(false);
                             }
-                            comunicador.setNuevoEvento(false);
                         }
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Comunicador.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -129,7 +151,7 @@ public class GUI_Reproductor extends JFrame{
     private void colocarBotones(){
         //botonPausaB
         JButton pausaB = new JButton("Pausa");
-        pausaB.setBounds(50,70,100,40);
+        pausaB.setBounds(250,70,100,40);
         panelReproductor.add(pausaB);
 
         //reproducir
@@ -139,53 +161,54 @@ public class GUI_Reproductor extends JFrame{
 
         //botonSiguiente
         JButton siguiente = new JButton("Siguiente");
-        siguiente.setBounds(250,70,100,40);
+        siguiente.setBounds(350,70,100,40);
         panelReproductor.add(siguiente);
 
         //botonAnterior
         JButton anterior = new JButton("Atrás");
-        anterior.setBounds(350,70,100,40);
+        anterior.setBounds(50,70,100,40);
         panelReproductor.add(anterior);
 
+        //botonReproduccionContinua
+        JButton reproduccionContinuabtn = new JButton("Continua");
+        reproduccionContinuabtn.setBounds(450,70,100,40);
+        panelReproductor.add(reproduccionContinuabtn);
+
+        //botonfavoritos
+        JButton favoritosbtn = new JButton("Favoritos");
+        favoritosbtn.setBounds(550,70,100,40);
+        panelReproductor.add(favoritosbtn);
+
         //BarraVolumen
-        Scrollbar barraVolumen = new Scrollbar();
+        barraVolumen = new Scrollbar();
         barraVolumen.setOrientation(Adjustable.HORIZONTAL);
         barraVolumen.setMinimum(0);
-        barraVolumen.setMaximum(100);
-        barraVolumen.setBlockIncrement(10);
-        barraVolumen.setBounds(450,70,100,40);
+        barraVolumen.setMaximum(110);
+        barraVolumen.setValue(100);
+        barraVolumen.setBounds(50,120,200,40);
         panelReproductor.add(barraVolumen);
         ajustador = new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
-                if(e.getValue() > e.getValue()-1){
-                    reproductor.SubirVolumen();
-                }
-                reproductor.BajarVolumen();
+                System.out.println(e.getValue());
+                System.out.println(reproductor.ajustarVolumen(e.getValue()));
             }
         };
         barraVolumen.addAdjustmentListener(ajustador);
 
 
-        //subirVolumen
-//        JButton subirVolumen = new JButton("+");
-//        subirVolumen.setBounds(450,70,45,40);
-//        panelReproductor.add(subirVolumen);
-
-        //bajarVolumen
-//        JButton bajarVolumen = new JButton("-");
-//        bajarVolumen.setBounds(10,70,45,40);
-//        panelReproductor.add(bajarVolumen);
-
 
         //Inicio ActionListeners
-        ActionListener pauseBListener = new ActionListener() {
+        ActionListener siguienteListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                reproductor.Pausar();
+
+                reproductor.Siguente();
+                nombreCancion.setText(reproductor.getCancionActual());
+
             }
         };
-        pausaB.addActionListener(pauseBListener);
+        siguiente.addActionListener(siguienteListener);
 
         ActionListener reproducirListener = new ActionListener() {
             @Override
@@ -198,16 +221,15 @@ public class GUI_Reproductor extends JFrame{
         };
         reproducir.addActionListener(reproducirListener);
 
-        ActionListener siguienteListener = new ActionListener() {
+        ActionListener pauseBListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                reproductor.Siguente();
-                nombreCancion.setText(reproductor.getCancionActual());
-
+                reproductor.Pausar();
             }
         };
-        siguiente.addActionListener(siguienteListener);
+        pausaB.addActionListener(pauseBListener);
+
+
         ActionListener anteriorListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -219,22 +241,32 @@ public class GUI_Reproductor extends JFrame{
         };
         anterior.addActionListener(anteriorListener);
 
-//        ActionListener subirVolumenListener = new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                reproductor.SubirVolumen();
-//            }
-//        };
-//        subirVolumen.addActionListener(subirVolumenListener);
+        ActionListener continuaListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                reproductor.setRepContinua();
+                if(reproductor.isRepContinua()){
+                    reproduccionContinuabtn.setBackground(Color.green);
+                }
+                else {
+                    reproduccionContinuabtn.setBackground(anterior.getBackground());
+                }
+            }
+        };
+        reproduccionContinuabtn.addActionListener(continuaListener);
 
-//        ActionListener bajarVolumenListener = new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                reproductor.BajarVolumen();
-//            }
-//        };
-//        bajarVolumen.addActionListener(bajarVolumenListener);
-
+        ActionListener favoritosListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Biblioteca bibliotecaAgregar = listaBibliotecas.buscarNombre("Favoritas");
+                ListaCanciones nuevaLista = bibliotecaAgregar.getListaCanciones();
+                nuevaLista.insertarInicio(reproductor.getCancion());
+                bibliotecaAgregar.setListaCanciones(nuevaLista);
+                listaBibliotecas.modificarPorNombre(bibliotecaAgregar);
+                LectorXML.creaBibliotecas(usuario.getCorreoElectronico(), listaBibliotecas);
+            }
+        };
+        favoritosbtn.addActionListener(favoritosListener);
         //fin actionlisteners
 
     }//colocarBotones

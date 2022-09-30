@@ -207,10 +207,11 @@ public class GUI_RegistroUsuario extends JFrame {
 
             }//try-catch
         }//else
-        ListaCanciones listaCanciones = new ListaCanciones();
-        listaCanciones = LectorXML.leerXMLCanciones();
+        ListaCanciones listaCanciones = LectorXML.leerXMLCanciones();
         ListaBibliotecas listaBibliotecas = new ListaBibliotecas();
         listaBibliotecas.insertarInicio(new Biblioteca("Todas",listaCanciones, DateTimeFormatter.ofPattern("dd/MM/dd HH:mm").format(LocalDateTime.now())));
+        listaCanciones = new ListaCanciones();
+        listaBibliotecas.insertarInicio(new Biblioteca("Favoritas",listaCanciones, DateTimeFormatter.ofPattern("dd/MM/dd HH:mm").format(LocalDateTime.now())));
         LectorXML.creaBibliotecas(user.getCorreoElectronico(),listaBibliotecas);
 
         //        "Recursos/Bibliotecas/"+correo+".xml"

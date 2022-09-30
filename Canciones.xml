@@ -1,1 +1,93 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Canciones><Cancion><Id>3</Id><Nombre>The Oh Hellos：Dear Wormwood</Nombre><Direccion>The Oh Hellos： Dear Wormwood.mp3</Direccion></Cancion><Cancion><Id>2</Id><Nombre>The Oh Hellos： Danse Macabre</Nombre><Direccion>The Oh Hellos： Danse Macabre.mp3</Direccion></Cancion><Cancion><Id>1</Id><Nombre>The Oh Hellos：Bitter Water</Nombre><Direccion>The Oh Hellos： Bitter Water.mp3</Direccion></Cancion></Canciones>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Canciones>
+    <Cancion>
+        <Id>1</Id>
+        <Nombre>Prelude</Nombre>
+        <Direccion>The Oh Hellos： Prelude.mp3</Direccion>
+        <Genero>Folk</Genero>
+        <Artista>The Oh Hellos</Artista>
+        <Album>Dear Wormwood</Album>
+        <Ano>2015</Ano>
+        <Letra>Es mucho pa ponerlo a mano, ahi despues lo hago bonito</Letra>
+    </Cancion>
+    <Cancion>
+        <Id>2</Id>
+        <Nombre>Bitter Water</Nombre>
+        <Direccion>The Oh Hellos： Bitter Water.mp3</Direccion>
+        <Genero>Folk</Genero>
+        <Artista>The Oh Hellos</Artista>
+        <Album>Dear Wormwood</Album>
+        <Ano>2015</Ano>
+        <Letra>Es mucho pa ponerlo a mano, ahi despues lo hago bonito</Letra>
+    </Cancion>
+    <Cancion>
+        <Id>3</Id>
+        <Nombre>There Beneath</Nombre>
+        <Direccion>The Oh Hellos： There Beneath.mp3</Direccion>
+        <Genero>Folk</Genero>
+        <Artista>The Oh Hellos</Artista>
+        <Album>Dear Wormwood</Album>
+        <Ano>2015</Ano>
+        <Letra>Es mucho pa ponerlo a mano, ahi despues lo hago bonito</Letra>
+    </Cancion>
+    <Cancion>
+        <Id>4</Id>
+        <Nombre>In the Blue Hours of Morning</Nombre>
+        <Direccion>The Oh Hellos： In the Blue Hours of Morning.mp3</Direccion>
+        <Genero>Folk</Genero>
+        <Artista>The Oh Hellos</Artista>
+        <Album>Dear Wormwood</Album>
+        <Ano>2015</Ano>
+        <Letra>Es mucho pa ponerlo a mano, ahi despues lo hago bonito</Letra>
+    </Cancion>
+    <Cancion>
+        <Id>5</Id>
+        <Nombre>Exeunt</Nombre>
+        <Direccion>The Oh Hellos： Exeunt.mp3</Direccion>
+        <Genero>Folk</Genero>
+        <Artista>The Oh Hellos</Artista>
+        <Album>Dear Wormwood</Album>
+        <Ano>2015</Ano>
+        <Letra>Es mucho pa ponerlo a mano, ahi despues lo hago bonito</Letra>
+    </Cancion>
+    <Cancion>
+        <Id>6</Id>
+        <Nombre>Soldier, Poet, King</Nombre>
+        <Direccion>The Oh Hellos： Soldier, Poet, King.mp3</Direccion>
+        <Genero>Folk</Genero>
+        <Artista>The Oh Hellos</Artista>
+        <Album>Dear Wormwood</Album>
+        <Ano>2015</Ano>
+        <Letra>Es mucho pa ponerlo a mano, ahi despues lo hago bonito</Letra>
+    </Cancion>
+    <Cancion>
+        <Id>7</Id>
+        <Nombre>Dear Wormwood</Nombre>
+        <Direccion>The Oh Hellos： Dear Wormwood.mp3</Direccion>
+        <Genero>Folk</Genero>
+        <Artista>The Oh Hellos</Artista>
+        <Album>Dear Wormwood</Album>
+        <Ano>2015</Ano>
+        <Letra>Es mucho pa ponerlo a mano, ahi despues lo hago bonito</Letra>
+    </Cancion>
+    <Cancion>
+        <Id>8</Id>
+        <Nombre>Danse Macabre</Nombre>
+        <Direccion>The Oh Hellos： Danse Macabre.mp3</Direccion>
+        <Genero>Folk</Genero>
+        <Artista>The Oh Hellos</Artista>
+        <Album>Dear Wormwood</Album>
+        <Ano>2015</Ano>
+        <Letra>Es mucho pa ponerlo a mano, ahi despues lo hago bonito</Letra>
+    </Cancion>
+    <Cancion>
+        <Id>9</Id>
+        <Nombre>Thus Always to Tyrants</Nombre>
+        <Direccion>The Oh Hellos： Thus Always to Tyrants.mp3</Direccion>
+        <Genero>Folk</Genero>
+        <Artista>The Oh Hellos</Artista>
+        <Album>Dear Wormwood</Album>
+        <Ano>2015</Ano>
+        <Letra>Es mucho pa ponerlo a mano, ahi despues lo hago bonito</Letra>
+    </Cancion>
+</Canciones>

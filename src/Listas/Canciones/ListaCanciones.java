@@ -82,23 +82,32 @@ public class ListaCanciones {
         NodoCanciones actual = this.head;
         NodoCanciones previo = this.head.getPrev();
 
-        do {
-            if (actual.getData().getId().equals(id)){
-                boolean bandera = false;
-                if (inicio==actual){
-                    bandera = true;
-                }
-                previo.setNext(previo.getNext().getNext());
-                actual = actual.getNext();
-                actual.setPrev(previo);
-                if (bandera){
-                    inicio=actual;
-                }
+        if (actual==previo && actual.getData().getId().equals(id)){
+            this.head = null;
+        }
+        else{
+            if (inicio!=null){
+                do {
+                    if (actual.getData().getId().equals(id)){
+                        boolean bandera = false;
+                        if (inicio==actual){
+                            bandera = true;
+                        }
+                        previo.setNext(previo.getNext().getNext());
+                        actual = actual.getNext();
+                        actual.setPrev(previo);
+                        if (bandera){
+                            inicio=actual;
+                        }
 
+                    }
+                    actual = actual.getNext();
+                    previo = actual.getPrev();
+                }while (inicio!=actual);
+                this.head = actual;
             }
-            actual = actual.getNext();
-            previo = actual.getPrev();
-        }while (inicio!=actual);
+        }
+
 
     }
     public NodoCanciones getHead() {
@@ -116,4 +125,5 @@ public class ListaCanciones {
     public void setSize(int size) {
         this.size = size;
     }
+
 }
