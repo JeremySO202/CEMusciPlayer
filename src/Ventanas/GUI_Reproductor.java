@@ -69,6 +69,9 @@ public class GUI_Reproductor extends JFrame{
 
     }//iniciarComponentes
 
+    /***
+     * conecta al arduino e inicia el lector
+     */
     private void conectarArduino(){
         comunicador.conectar(comunicador.obtenerPuerto());
         comunicador.iniciarIO();
@@ -78,6 +81,10 @@ public class GUI_Reproductor extends JFrame{
             hilo.start();
         }
     }
+
+    /***
+     * crea el hilo donde se recibiran la accion enviada por el arduino
+     */
     private void iniciarHilo(){
         statusHilo=true;
         hilo=new Thread(){
@@ -150,10 +157,6 @@ public class GUI_Reproductor extends JFrame{
         this.getContentPane().add(panelReproductor);
 
     }//colocarPanel
-
-    private void colocarCanciones(ListaCanciones lista){
-        
-    }
 
     /***
      * Este metodo crea y pega los botones en el panel

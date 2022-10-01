@@ -97,15 +97,15 @@ public class GUI_RegistroUsuario extends JFrame {
 
 
         //Label Contraseña
-        JLabel contraseñaLbl = new JLabel("Contraseña: ");
-        contraseñaLbl.setBounds(50,270,200,30);
-        contraseñaLbl.setFont(new Font("arial",Font.PLAIN,20 ));
-        panelRegistroUsuario.add(contraseñaLbl);
+        JLabel contrasenaLbl = new JLabel("Contraseña: ");
+        contrasenaLbl.setBounds(50,270,200,30);
+        contrasenaLbl.setFont(new Font("arial",Font.PLAIN,20 ));
+        panelRegistroUsuario.add(contrasenaLbl);
 
         //Field Contraseña
-        JTextField contraseñaField = new JTextField();
-        contraseñaField.setBounds(50,320,200,30);
-        panelRegistroUsuario.add(contraseñaField);
+        JTextField contrasenaField = new JTextField();
+        contrasenaField.setBounds(50,320,200,30);
+        panelRegistroUsuario.add(contrasenaField);
 
         //Boton de registro
         JButton registroBtn = new JButton("Registrar");
@@ -117,7 +117,7 @@ public class GUI_RegistroUsuario extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 while (nombreField.getText().equals("") || apellidoField.getText().equals("") ||
-                        correoField.getText().equals("") || contraseñaField.getText().equals("") ||
+                        correoField.getText().equals("") || contrasenaField.getText().equals("") ||
                         listaProvincias.getSelectedItem().equals("Provincia:")){
                     JOptionPane.showMessageDialog(null,"Dejaste un espacio en blanco");
                     return ;
@@ -137,7 +137,7 @@ public class GUI_RegistroUsuario extends JFrame {
                     usuarioActual = usuarioActual.getNext();
                 }
 
-                escribirCSV(new Usuario(nombreField.getText(),apellidoField.getText(),correoField.getText(), (String) listaProvincias.getSelectedItem(),contraseñaField.getText()));
+                escribirCSV(new Usuario(nombreField.getText(),apellidoField.getText(),correoField.getText(), (String) listaProvincias.getSelectedItem(),contrasenaField.getText()));
                 dispose();
                 GUI_InicioSesion gui_inicioSesion = new GUI_InicioSesion();
                 gui_inicioSesion.setVisible(true);

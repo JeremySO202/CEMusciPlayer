@@ -88,20 +88,18 @@ public class Reproductor {
         NuevaCancion(this.cancionActual.getData().getDireccion());
 
     }
+
+    /***
+     * setea el volumen al nivel indicado
+     * @param volumen volumen a poner(0-100)
+     * @return retorna el volumen
+     */
     public double ajustarVolumen(double volumen){
         reproductor.setVolume(volumen/100);
         return reproductor.getVolume();
 
     }
-    public void BajarVolumen(){
-        double volumen = reproductor.getVolume()*100;
-        if (volumen > 0){
-            volumen = volumen - 20;
-            reproductor.setVolume(volumen/100);
-        }
-        System.out.println(volumen);
 
-    }
 
     /***
      * Devuelve el nombre de la cancion que esta siendo reproducida
@@ -116,6 +114,9 @@ public class Reproductor {
         return repContinua;
     }
 
+    /***
+     * Cambia entre false y true repContinua
+     */
     public void setRepContinua() {
         if (isRepContinua()){
             repContinua = false;

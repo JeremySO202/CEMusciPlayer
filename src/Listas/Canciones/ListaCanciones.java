@@ -52,6 +52,11 @@ public class ListaCanciones {
 
     }
 
+    /***
+     * Busca un id y retorna la cancion correspondiente
+     * @param id
+     * @return cancion encontrada
+     */
     public Cancion buscarId(String id){
         NodoCanciones inicio = this.head;
         NodoCanciones actual = this.head;
@@ -65,6 +70,11 @@ public class ListaCanciones {
         return null;
     }
 
+    /***
+     * Busca por id y modifica la cancion encontrada
+     * @param id
+     * @param modificada
+     */
     public void modificarPorId(String id, Cancion modificada){
         NodoCanciones inicio = this.head;
         NodoCanciones actual = this.head;
@@ -77,6 +87,11 @@ public class ListaCanciones {
         }while (inicio!=actual);
 
     }
+
+    /***
+     * Busca por id y elimina el encontrado
+     * @param id
+     */
     public void eliminarPorId(String id){
         NodoCanciones inicio = this.head;
         NodoCanciones actual = this.head;
@@ -114,16 +129,9 @@ public class ListaCanciones {
         return head;
     }
 
-    public void setHead(NodoCanciones head) {
-        this.head = head;
-    }
-
     public int getSize() {
         return size;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
 
 }

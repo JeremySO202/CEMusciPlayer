@@ -28,43 +28,39 @@ public class Usuario {
         this.contrasena = contrasena;
     }//constructor
 
+    /***
+     * Retorna el nombre del usuario
+     * @return el nombre del usuario
+     */
     public String getNombre() {
         return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    /***
+     * Retorna el apellido del usuario
+     * @return el apellido del usuario
+     */
     public String getApellido() {
         return apellido;
     }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
+    /***
+     * Retorna el correo Electronico del usuario
+     * @return el correo Electronico del usuario
+     */
     public String getCorreoElectronico() {
         return correoElectronico;
     }
-
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
-
+    /***
+     * Retorna el provincia del usuario
+     * @return el provincia del usuario
+     */
     public String getProvincia() {
         return provincia;
     }
-
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
+    /***
+     * Retorna el contrasena del usuario
+     * @return el contrasena del usuario
+     */
     public String getContrasena() {
         return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
     }
 }//fin clase usuario

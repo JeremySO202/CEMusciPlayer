@@ -20,6 +20,9 @@ public class Comunicador implements SerialPortEventListener{
     private boolean nuevoEvento = false;
     private String texto = "";
 
+    /***
+     * Inicia el listener del serialPort
+     */
     public void initListener(){
         try{
             serialPort.addEventListener(this);
@@ -30,10 +33,11 @@ public class Comunicador implements SerialPortEventListener{
         }
 
     }
-    public String[] getDato(){
-        return dato;
-    }
 
+    /***
+     * Listener en eventos en el puento serial
+     * @param spe
+     */
     public void serialEvent(SerialPortEvent spe) {
         if(spe.getEventType() == SerialPortEvent.DATA_AVAILABLE){
             try{
@@ -56,6 +60,10 @@ public class Comunicador implements SerialPortEventListener{
         }//llave if
     }
 
+    /***
+     * Retorna el puerto al que debe de conectarse(solo se conecta al COM3)
+     * @return
+     */
     public String obtenerPuerto(){
         cuantosPuertos=CommPortIdentifier.getPortIdentifiers();
         String resultado="";
@@ -72,6 +80,10 @@ public class Comunicador implements SerialPortEventListener{
         return null;
     }
 
+    /***
+     * Conecta a el puerto correspondiente
+     * @param cualPuerto puerto a conectar
+     */
     public void conectar(String cualPuerto){
         System.out.println(cualPuerto);
         portId=(CommPortIdentifier) portMap.get(cualPuerto);
@@ -93,6 +105,10 @@ public class Comunicador implements SerialPortEventListener{
     public boolean getConectado(){
         return this.conectado;
     }//llave getConectado
+
+    /***
+     * Desconecta la conexion con el puerto serial
+     */
     public void desconectar(){
         try{
             serialPort.removeEventListener();
@@ -105,6 +121,11 @@ public class Comunicador implements SerialPortEventListener{
             System.out.println("ERROR: "+e.getMessage());
         }
     }//llave desconectar
+
+    /***
+     * inicia recepcion y envio de datos por el puerto serial
+     * @return true si la conexion se logro y false en caso contrario
+     */
     public boolean iniciarIO(){
         try{
             input=serialPort.getInputStream();
@@ -117,15 +138,22 @@ public class Comunicador implements SerialPortEventListener{
 
     }//llave io
 
-    public void escribir(int _texto) {
+    /***
+     * Escribe el el puerto serial
+     * @param texto
+     */
+    public void escribir(int texto) {
         try {
-            output.write((_texto + "").getBytes());
+            output.write((texto + "").getBytes());
             output.flush();
         } catch (Exception ex) {
             System.out.println(ex.getMessage() + "1111");
         }
     }
 
+    public String[] getDato(){
+        return dato;
+    }
     public boolean isNuevoEvento() {
         return nuevoEvento;
     }

@@ -21,6 +21,10 @@ public class LectorCSV {
         this.listaUsuarios = new ListaUsuarios();
     }//constructor
 
+    /***
+     * extrae lo usuarios del CSV y los carga en una lista de usuarios
+     * @return retorna la lista con los usuarios
+     */
     public ListaUsuarios extraerUsuarios(){
 
         try{
@@ -33,11 +37,9 @@ public class LectorCSV {
                 String apellido = leerUsuarios.get(1);
                 String correo = leerUsuarios.get(2);
                 String provincia = leerUsuarios.get(3);
-                String contraseña = leerUsuarios.get(4);
+                String contrasena = leerUsuarios.get(4);
 
-                this.listaUsuarios.insertarInicio( new Usuario(nombre, apellido, correo, provincia, contraseña));
-
-                //usuarios.add(new Usuario(nombre, apellido, correo, provincia, contraseña));
+                this.listaUsuarios.insertarInicio( new Usuario(nombre, apellido, correo, provincia, contrasena));
 
 
             }//while
@@ -54,10 +56,19 @@ public class LectorCSV {
 
         return this.listaUsuarios;
     }
+
+    /***
+     * Retorna el nombre del archivo
+     * @return el nombre del archivo
+     */
     public String getArchivoUsuarios() {
         return archivoUsuarios;
     }
 
+    /***
+     * Cambia el nombre del archivo
+     * @param archivoUsuarios nuevo nombre del archivo
+     */
     public void setArchivoUsuarios(String archivoUsuarios) {
         this.archivoUsuarios = archivoUsuarios;
     }
