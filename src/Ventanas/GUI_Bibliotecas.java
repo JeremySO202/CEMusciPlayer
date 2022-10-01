@@ -50,7 +50,10 @@ public class GUI_Bibliotecas extends JFrame{
     private ListaCanciones listaCancionesTodas;
     private ListaBibliotecas listaBibliotecas;
 
-
+    /***
+     * Metodo constructor de la GUI_Biblioteca
+     * @param usuario
+     */
     public GUI_Bibliotecas(Usuario usuario){
         iniciarComponentes(usuario);
 
@@ -177,6 +180,10 @@ public class GUI_Bibliotecas extends JFrame{
         });
     }
 
+    /***
+     * Inicio de componentes de la GUI
+     * @param usuario
+     */
     private void iniciarComponentes(Usuario usuario){
         frame = new JFrame("Bibliotecas");
         frame.setContentPane(panel1);
@@ -197,6 +204,9 @@ public class GUI_Bibliotecas extends JFrame{
 
     }//iniciarComponentes
 
+    /***
+     * carga la lista donde se visualizan las bibliotecas
+     */
     private void cargarLista(){
         new Thread(){
             public void run() {
@@ -209,6 +219,10 @@ public class GUI_Bibliotecas extends JFrame{
 
     }
 
+    /***
+     * carga la tabla donde estan las canciones
+     * @param biblioteca biblioteca a cargar
+     */
     private void cargarTabla(Biblioteca biblioteca){
         entryNombrePlaylist.setText(biblioteca.getNombre());
         entryCantidadPlaylist.setText(String.valueOf(biblioteca.getListaCanciones().getSize()));
@@ -238,6 +252,11 @@ public class GUI_Bibliotecas extends JFrame{
 
     }
 
+    /***
+     * convierte los datos de lista biblioteca a un array
+     * @param listaBibliotecas lista a convertir
+     * @return array con los nombre de las bibliotecas
+     */
     private ArrayList conversor(ListaBibliotecas listaBibliotecas){
         NodoBibliotecas temp = listaBibliotecas.getHead();
         array = new ArrayList();

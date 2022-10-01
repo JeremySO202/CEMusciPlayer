@@ -20,6 +20,10 @@ import java.io.IOException;
 
 public class LectorXML {
 
+    /***
+     * crea el xml con una lista de canciones
+     * @param listaCanciones lista de canciones a guardar
+     */
     public static void creaCanciones(ListaCanciones listaCanciones){
         try {
             NodoCanciones cancionPrimera = listaCanciones.getHead();
@@ -92,6 +96,11 @@ public class LectorXML {
         }
 
     }
+
+    /***
+     * Carga los datos del XML en la listaCanciones
+     * @return retorna la lista con las canciones de las canciones cargadas
+     */
     public static ListaCanciones leerXMLCanciones() {
 
         ListaCanciones lista = null;
@@ -159,6 +168,11 @@ public class LectorXML {
         return lista;
     }
 
+    /***
+     * crea el XML del usuarios donde se almacenaran las bibliotecas de este
+     * @param usuario
+     * @param listaBibliotecas
+     */
     public static void creaBibliotecas(String usuario, ListaBibliotecas listaBibliotecas){
         try {
             NodoBibliotecas actualBiblioteca = listaBibliotecas.getHead();
@@ -233,6 +247,11 @@ public class LectorXML {
 
     }
 
+    /***
+     * Carga los datos del XML en la lista de bibliotecas de un usuario
+     * @param usuario correo del usuario del que queremos cargar los datos
+     * @return lista de las biblitecas del usuarios
+     */
     public static ListaBibliotecas leerXMLBibliotecas(String usuario) {
 
         ListaBibliotecas listaBibliotecasFinal = new ListaBibliotecas();

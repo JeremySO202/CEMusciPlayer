@@ -14,6 +14,17 @@ public class Cancion {
     private String ano;
     private String letra;
 
+    /***
+     * Metodo constructor de la clase Cancion
+     * @param id id de la cancion
+     * @param nombre nombre de la cancion
+     * @param direccion direccion de la cancion
+     * @param genero genero de la cancion
+     * @param artista artista de la cancion
+     * @param album album de la cancion
+     * @param ano ano de la cancion
+     * @param letra letra de la cancion
+     */
     public Cancion(String id, String nombre, String direccion, String genero, String artista, String album, String ano, String letra) {
         this.id = id;
         this.nombre = nombre;
@@ -25,12 +36,12 @@ public class Cancion {
         this.letra = letra;
     }
 
+    /***
+     * Retorna el id de la cancion
+     * @return el id de la cancion
+     */
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     /***
@@ -56,50 +67,40 @@ public class Cancion {
     }
 
     /***
-     * Cambia la direccion de la cancion
-     * @param direccion nueva direccion a guardar
+     * Retorna el genero de la cancion
+     * @return el genero de la cancion
      */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
+    /***
+     * Retorna el artista de la cancion
+     * @return el artista de la cancion
+     */
     public String getArtista() {
         return artista;
     }
 
-    public void setArtista(String artista) {
-        this.artista = artista;
-    }
-
+    /***
+     * Retorna el album de la cancion
+     * @return el album de la cancion
+     */
     public String getAlbum() {
         return album;
     }
-
-    public void setAlbum(String album) {
-        this.album = album;
-    }
-
+    /***
+     * Retorna el ano de la cancion
+     * @return el ano de la cancion
+     */
     public String getAno() {
         return ano;
     }
-
-    public void setAno(String ano) {
-        this.ano = ano;
-    }
-
+    /***
+     * Retorna el letra de la cancion
+     * @return el letra de la cancion
+     */
     public String getLetra() {
         return letra;
-    }
-
-    public void setLetra(String letra) {
-        this.letra = letra;
     }
 }

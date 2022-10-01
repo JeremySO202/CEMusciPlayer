@@ -60,10 +60,10 @@ public class GUI_InicioSesion extends JFrame {
         panelInicioSesion.add(usuarioField);
 
         //Label Contraseña
-        JLabel contraseñaLbl = new JLabel("Ingrese la contraseña:");
-        contraseñaLbl.setBounds(148, 100, 200, 30);
-        contraseñaLbl.setFont(new Font("berlin sans fb", Font.PLAIN, 20));
-        panelInicioSesion.add(contraseñaLbl);
+        JLabel contrasenaLbl = new JLabel("Ingrese la contraseña:");
+        contrasenaLbl.setBounds(148, 100, 200, 30);
+        contrasenaLbl.setFont(new Font("berlin sans fb", Font.PLAIN, 20));
+        panelInicioSesion.add(contrasenaLbl);
 
         //Barra de escritura contraseña
         JPasswordField contrasenaField;
@@ -108,7 +108,6 @@ public class GUI_InicioSesion extends JFrame {
                     usuarioActual = usuarioActual.getNext();
                 }//for
                 JOptionPane.showMessageDialog(null, "Usuarios o contraseña incorrecta");
-
 
 
             }

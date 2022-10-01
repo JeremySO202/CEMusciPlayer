@@ -50,6 +50,11 @@ public class ListaBibliotecas {
         this.size++;
     }
 
+    /***
+     * busca por nombre una biblioteca
+     * @param nombre
+     * @return retorna la biblioteca encontrada
+     */
     public Biblioteca buscarNombre(String nombre){
         NodoBibliotecas temp = head;
         while (temp!=null){
@@ -61,6 +66,10 @@ public class ListaBibliotecas {
         return null;
     }
 
+    /***
+     * busca una playlist por su nombre y modifica los datos de una playlist
+     * @param modificada
+     */
     public void modificarPorNombre(Biblioteca modificada){
         ListaBibliotecas nueva = new ListaBibliotecas();
         NodoBibliotecas temp = head;
@@ -74,6 +83,10 @@ public class ListaBibliotecas {
         this.head = nueva.getHead();
     }
 
+    /***
+     * busca una playlist por su nombre y la elimina
+     * @param eliminar
+     */
     public void eliminarPorNombre(String eliminar){
         ListaBibliotecas nueva = new ListaBibliotecas();
         NodoBibliotecas temp = head;
@@ -88,19 +101,11 @@ public class ListaBibliotecas {
         this.head = nueva.getHead();
     }
 
+    /***
+     * Retorna la cabeza de la lista
+     * @return
+     */
     public NodoBibliotecas getHead() {
         return head;
-    }
-
-    public void setHead(NodoBibliotecas head) {
-        this.head = head;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
     }
 }
